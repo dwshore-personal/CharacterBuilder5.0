@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ac2-XQ-aOB">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Character Builder-->
+        <scene sceneID="IRe-aH-1Gb">
+            <objects>
+                <tableViewController id="17o-Vp-7bj" customClass="CharacterBuilderParentTVC" customModule="CharacterBuilder5" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="B5w-fi-2GU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MainMenuCell" textLabel="qqY-nq-861" detailTextLabel="9v5-tW-Rvc" style="IBUITableViewCellStyleSubtitle" id="oqa-7l-jpf">
+                                <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oqa-7l-jpf" id="KdO-RC-l7n">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qqY-nq-861">
+                                            <rect key="frame" x="20" y="10" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9v5-tW-Rvc">
+                                            <rect key="frame" x="20" y="31.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="17o-Vp-7bj" id="Fl4-If-Epv"/>
+                            <outlet property="delegate" destination="17o-Vp-7bj" id="7cl-NY-Dnm"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Character Builder" id="8BH-Ha-wAR"/>
+                    <connections>
+                        <segue destination="c2S-dJ-Z1a" kind="show" identifier="showSimple" id="n0j-Fg-jQi"/>
+                        <segue destination="nBp-IL-xKn" kind="presentation" identifier="showPopup" id="SnF-Kh-9E1"/>
+                        <segue destination="riA-p5-eJG" kind="show" identifier="showLevel" id="C4V-mB-WNs"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HZS-vZ-ENQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-98" y="165"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="G4r-5W-Sca">
+            <objects>
+                <navigationController id="ac2-XQ-aOB" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gKY-PX-eBn">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="17o-Vp-7bj" kind="relationship" relationship="rootViewController" id="eaV-98-exR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rIZ-iv-R65" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-870" y="165"/>
+        </scene>
+        <!--SimplePopup-->
+        <scene sceneID="rYw-rD-tRW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SimplePopup" id="nBp-IL-xKn" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tIs-l6-CZO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="698" y="59"/>
+        </scene>
+        <!--LevelList-->
+        <scene sceneID="OX7-Zv-Quu">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LevelList" id="riA-p5-eJG" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ppA-3z-TrK"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Usu-k5-8fV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="697" y="110"/>
+        </scene>
+        <!--SimpleList-->
+        <scene sceneID="Z7H-vC-9zG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SimpleList" id="c2S-dJ-Z1a" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="YSZ-2K-5cc"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HI9-CO-1HG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="697.10144927536237" y="164.0625"/>
+        </scene>
+    </scenes>
+</document>

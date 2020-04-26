@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RE8-Vy-4iH">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Level List DetailVC-->
+        <scene sceneID="FhS-1S-IR7">
+            <objects>
+                <viewController id="RE8-Vy-4iH" customClass="LevelListDetailVC" customModule="CharacterBuilder5" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0zS-fc-5TZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7z5-8C-c2u">
+                                <rect key="frame" x="20" y="60" width="374" height="41"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zcD-MC-ZUY">
+                                <rect key="frame" x="20" y="109" width="374" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wAF-GH-s3G">
+                                <rect key="frame" x="20" y="138" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="done:" destination="RE8-Vy-4iH" eventType="editingDidEndOnExit" id="TzS-vJ-f7J"/>
+                                    <outlet property="delegate" destination="RE8-Vy-4iH" id="Uzh-4Q-8No"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="7z5-8C-c2u" secondAttribute="trailing" constant="20" id="C1S-f5-l1A"/>
+                            <constraint firstItem="zcD-MC-ZUY" firstAttribute="top" secondItem="7z5-8C-c2u" secondAttribute="bottom" constant="8" id="RBc-iE-jSD"/>
+                            <constraint firstItem="7z5-8C-c2u" firstAttribute="leading" secondItem="0zS-fc-5TZ" secondAttribute="leading" constant="20" id="V3f-Cp-MPK"/>
+                            <constraint firstItem="7z5-8C-c2u" firstAttribute="top" secondItem="0zS-fc-5TZ" secondAttribute="top" constant="60" id="do2-hJ-wvj"/>
+                            <constraint firstItem="wAF-GH-s3G" firstAttribute="leading" secondItem="5Lx-wG-oqA" secondAttribute="leading" constant="20" id="nvo-eE-3A4"/>
+                            <constraint firstAttribute="trailing" secondItem="zcD-MC-ZUY" secondAttribute="trailing" constant="20" id="o2Q-9y-WAs"/>
+                            <constraint firstItem="wAF-GH-s3G" firstAttribute="top" secondItem="zcD-MC-ZUY" secondAttribute="bottom" constant="8" id="tLK-Yf-dbb"/>
+                            <constraint firstItem="zcD-MC-ZUY" firstAttribute="leading" secondItem="0zS-fc-5TZ" secondAttribute="leading" constant="20" id="uy4-Jz-VOu"/>
+                            <constraint firstItem="5Lx-wG-oqA" firstAttribute="trailing" secondItem="wAF-GH-s3G" secondAttribute="trailing" constant="20" id="w3D-zt-CdT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5Lx-wG-oqA"/>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem systemItem="cancel" id="NdH-ob-eZH">
+                            <connections>
+                                <action selector="cancel:" destination="RE8-Vy-4iH" id="jyU-eZ-q43"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="RaL-Db-BhW"/>
+                        <barButtonItem enabled="NO" systemItem="done" id="Bte-El-J3e">
+                            <connections>
+                                <action selector="done:" destination="RE8-Vy-4iH" id="t9a-7K-nhs"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="Wt6-mD-rSl"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <connections>
+                        <outlet property="addBarButton" destination="Bte-El-J3e" id="dSN-vQ-o1A"/>
+                        <outlet property="cancelBarButton" destination="NdH-ob-eZH" id="W5W-u5-cfQ"/>
+                        <outlet property="detailDescription" destination="zcD-MC-ZUY" id="1dF-Ub-Rf7"/>
+                        <outlet property="detailTitle" destination="7z5-8C-c2u" id="t48-sg-7OH"/>
+                        <outlet property="textField" destination="wAF-GH-s3G" id="Iml-fk-JMc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Avl-HV-MIo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2338" y="329"/>
+        </scene>
+    </scenes>
+</document>

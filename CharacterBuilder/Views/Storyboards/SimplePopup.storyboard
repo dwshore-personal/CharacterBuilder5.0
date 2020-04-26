@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pjr-7Q-H6l">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Simple PopupVC-->
+        <scene sceneID="vXF-NZ-rde">
+            <objects>
+                <viewController id="pjr-7Q-H6l" customClass="SimplePopupVC" customModule="CharacterBuilder5" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" id="leb-Po-SyY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="n4q-kt-ZeH" customClass="PopupUIV" customModule="CharacterBuilder5" customModuleProvider="target">
+                                <rect key="frame" x="30" y="300.5" width="354" height="295"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="cP5-ms-1cA">
+                                        <rect key="frame" x="10" y="10" width="334" height="275"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUw-7x-mCl">
+                                                <rect key="frame" x="10" y="0.0" width="314" height="41"/>
+                                                <string key="text">Enter your character name 
+(you can change it later):</string>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Call me Ishmael" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e3C-aw-7WR">
+                                                <rect key="frame" x="10" y="56" width="314" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" usesAttributedText="YES" allowsEditingTextAttributes="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kv5-Nj-dvA">
+                                                <rect key="frame" x="10" y="105" width="314" height="120"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" selected="YES"/>
+                                                </accessibility>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="120" id="KgX-vu-iOh"/>
+                                                </constraints>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="I'm the only person with 2 left feet.">
+                                                        <attributes>
+                                                            <color key="NSColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <font key="NSFont" metaFont="menu" size="14"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes"/>
+                                            </textView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="174" translatesAutoresizingMaskIntoConstraints="NO" id="zLq-nO-8yn">
+                                                <rect key="frame" x="10" y="240" width="314" height="35"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CjG-U1-7En">
+                                                        <rect key="frame" x="0.0" y="0.0" width="82" height="35"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="35" id="WZf-zf-ubf"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Cancel">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="cancelButton:" destination="pjr-7Q-H6l" eventType="touchUpInside" id="hr1-6C-Qbw"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VHH-Gx-tDJ">
+                                                        <rect key="frame" x="256" y="0.0" width="58" height="35"/>
+                                                        <state key="normal" title="Save"/>
+                                                        <connections>
+                                                            <action selector="saveButton:" destination="pjr-7Q-H6l" eventType="touchUpInside" id="Fdp-GX-9Va"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="VHH-Gx-tDJ" firstAttribute="height" secondItem="CjG-U1-7En" secondAttribute="height" id="2Pl-Uq-m14"/>
+                                                    <constraint firstItem="VHH-Gx-tDJ" firstAttribute="width" secondItem="CjG-U1-7En" secondAttribute="width" multiplier="0.708333" id="BfW-w8-CIh"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="zLq-nO-8yn" firstAttribute="width" secondItem="e3C-aw-7WR" secondAttribute="width" id="7ZY-XZ-3BY"/>
+                                            <constraint firstAttribute="trailing" secondItem="zLq-nO-8yn" secondAttribute="trailing" constant="10" id="F1M-DT-wAW"/>
+                                            <constraint firstItem="zLq-nO-8yn" firstAttribute="width" secondItem="Kv5-Nj-dvA" secondAttribute="width" id="VW3-hM-eOf"/>
+                                            <constraint firstItem="zLq-nO-8yn" firstAttribute="width" secondItem="UUw-7x-mCl" secondAttribute="width" id="mvJ-UO-rdb"/>
+                                            <constraint firstItem="zLq-nO-8yn" firstAttribute="leading" secondItem="cP5-ms-1cA" secondAttribute="leading" constant="10" id="xdP-sR-Ck9"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="cP5-ms-1cA" secondAttribute="trailing" constant="10" id="Ahe-m1-6e9"/>
+                                    <constraint firstAttribute="bottom" secondItem="cP5-ms-1cA" secondAttribute="bottom" constant="10" id="OBa-tT-nM3"/>
+                                    <constraint firstItem="cP5-ms-1cA" firstAttribute="leading" secondItem="n4q-kt-ZeH" secondAttribute="leading" constant="10" id="rnZ-nV-xuS"/>
+                                    <constraint firstItem="cP5-ms-1cA" firstAttribute="top" secondItem="n4q-kt-ZeH" secondAttribute="top" constant="10" id="vaA-ht-fMl"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="n4q-kt-ZeH" firstAttribute="leading" secondItem="2Kp-YR-GJR" secondAttribute="leading" constant="30" id="P4O-Fi-g8e"/>
+                            <constraint firstItem="n4q-kt-ZeH" firstAttribute="centerY" secondItem="leb-Po-SyY" secondAttribute="centerY" id="uEe-BE-Bbl"/>
+                            <constraint firstItem="n4q-kt-ZeH" firstAttribute="centerX" secondItem="leb-Po-SyY" secondAttribute="centerX" id="y7G-mM-gyQ"/>
+                            <constraint firstItem="2Kp-YR-GJR" firstAttribute="trailing" secondItem="n4q-kt-ZeH" secondAttribute="trailing" constant="30" id="yf8-R8-D0Z"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2Kp-YR-GJR"/>
+                    </view>
+                    <connections>
+                        <outlet property="paragraphField" destination="Kv5-Nj-dvA" id="bJO-td-Pu9"/>
+                        <outlet property="popupLabel" destination="UUw-7x-mCl" id="Mre-7N-Sdg"/>
+                        <outlet property="textField" destination="e3C-aw-7WR" id="NZ2-4O-aQf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="12K-bv-ujq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1117.3913043478262" y="-756.69642857142856"/>
+        </scene>
+    </scenes>
+</document>
