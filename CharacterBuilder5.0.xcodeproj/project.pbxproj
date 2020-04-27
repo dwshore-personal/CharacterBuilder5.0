@@ -54,7 +54,7 @@
 		026A7DF3235CB9640017A120 /* SimpleListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleListCell.swift; sourceTree = "<group>"; };
 		029CC65423806A2700341295 /* CharacterStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStats.swift; sourceTree = "<group>"; };
 		029CC6562380E62E00341295 /* CharacterBackgrounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterBackgrounds.swift; sourceTree = "<group>"; };
-		02B3F3AE235B786900D3DF1C /* CharacterBuilder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CharacterBuilder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		02B3F3AE235B786900D3DF1C /* CharacterBuilder5.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CharacterBuilder5.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02B3F3B1235B786900D3DF1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02B3F3B3235B786900D3DF1C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		02B3F3B5235B786900D3DF1C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 		02B3F3A5235B786900D3DF1C = {
 			isa = PBXGroup;
 			children = (
-				02B3F3B0235B786900D3DF1C /* CharacterBuilder */,
+				02B3F3B0235B786900D3DF1C /* CharacterBuilder5.0 */,
 				02B3F3AF235B786900D3DF1C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -159,12 +159,12 @@
 		02B3F3AF235B786900D3DF1C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				02B3F3AE235B786900D3DF1C /* CharacterBuilder.app */,
+				02B3F3AE235B786900D3DF1C /* CharacterBuilder5.0.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		02B3F3B0235B786900D3DF1C /* CharacterBuilder */ = {
+		02B3F3B0235B786900D3DF1C /* CharacterBuilder5.0 */ = {
 			isa = PBXGroup;
 			children = (
 				02B3F3C9235B78B400D3DF1C /* Views */,
@@ -176,7 +176,7 @@
 				02B3F3C2235B786C00D3DF1C /* Info.plist */,
 				02B3F3BA235B786900D3DF1C /* CharacterBuilder5_0.xcdatamodeld */,
 			);
-			path = CharacterBuilder;
+			path = CharacterBuilder5.0;
 			sourceTree = "<group>";
 		};
 		02B3F3C8235B78AA00D3DF1C /* Models */ = {
@@ -204,9 +204,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		02B3F3AD235B786900D3DF1C /* CharacterBuilder */ = {
+		02B3F3AD235B786900D3DF1C /* CharacterBuilder5.0 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 02B3F3C5235B786C00D3DF1C /* Build configuration list for PBXNativeTarget "CharacterBuilder" */;
+			buildConfigurationList = 02B3F3C5235B786C00D3DF1C /* Build configuration list for PBXNativeTarget "CharacterBuilder5.0" */;
 			buildPhases = (
 				02B3F3AA235B786900D3DF1C /* Sources */,
 				02B3F3AB235B786900D3DF1C /* Frameworks */,
@@ -216,9 +216,9 @@
 			);
 			dependencies = (
 			);
-			name = CharacterBuilder;
+			name = CharacterBuilder5.0;
 			productName = CharacterBuilder5.0;
-			productReference = 02B3F3AE235B786900D3DF1C /* CharacterBuilder.app */;
+			productReference = 02B3F3AE235B786900D3DF1C /* CharacterBuilder5.0.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -236,7 +236,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 02B3F3A9235B786900D3DF1C /* Build configuration list for PBXProject "CharacterBuilder" */;
+			buildConfigurationList = 02B3F3A9235B786900D3DF1C /* Build configuration list for PBXProject "CharacterBuilder5.0" */;
 			compatibilityVersion = "Xcode 11.4";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -249,7 +249,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				02B3F3AD235B786900D3DF1C /* CharacterBuilder */,
+				02B3F3AD235B786900D3DF1C /* CharacterBuilder5.0 */,
 			);
 		};
 /* End PBXProject section */
@@ -443,7 +443,7 @@
 				);
 				MARKETING_VERSION = 5.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lux.CharacterBuilder;
-				PRODUCT_NAME = CharacterBuilder;
+				PRODUCT_NAME = CharacterBuilder5.0;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -463,7 +463,7 @@
 				);
 				MARKETING_VERSION = 5.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lux.CharacterBuilder;
-				PRODUCT_NAME = CharacterBuilder;
+				PRODUCT_NAME = CharacterBuilder5.0;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -472,7 +472,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		02B3F3A9235B786900D3DF1C /* Build configuration list for PBXProject "CharacterBuilder" */ = {
+		02B3F3A9235B786900D3DF1C /* Build configuration list for PBXProject "CharacterBuilder5.0" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				02B3F3C3235B786C00D3DF1C /* Debug */,
@@ -481,7 +481,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		02B3F3C5235B786C00D3DF1C /* Build configuration list for PBXNativeTarget "CharacterBuilder" */ = {
+		02B3F3C5235B786C00D3DF1C /* Build configuration list for PBXNativeTarget "CharacterBuilder5.0" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				02B3F3C6235B786C00D3DF1C /* Debug */,
