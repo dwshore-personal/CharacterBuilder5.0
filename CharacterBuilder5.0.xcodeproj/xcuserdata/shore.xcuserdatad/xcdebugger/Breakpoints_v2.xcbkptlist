@@ -16,8 +16,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "102"
             endingLineNumber = "102"
-            landmarkName = "textField(_:shouldChangeCharactersIn:replacementString:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -32,8 +32,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "97"
             endingLineNumber = "97"
-            landmarkName = "textFieldShouldReturn(_:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -48,8 +48,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "42"
             endingLineNumber = "42"
-            landmarkName = "done(_:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -64,8 +64,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "63"
             endingLineNumber = "63"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -80,8 +80,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "49"
             endingLineNumber = "49"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -242,6 +242,69 @@
             endingLineNumber = "120"
             landmarkName = "importCellData(from:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AE043069-EB13-4058-A211-7DBA8357C23E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CharacterBuilder5.0/Models/Navigation Models/NavigationMenuList.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "updateMenuFromCharacterSettings(character:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AE043069-EB13-4058-A211-7DBA8357C23E - 301619f1fd6eec75"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CharacterBuilder5_0.NavigationMenuList.updateMenuFromCharacterSettings(character: CharacterBuilder5_0.CharacterBase) -&gt; ()"
+                  moduleName = "CharacterBuilder5.0"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shore/Documents/Coding/CharacterBuilder5.0/CharacterBuilder5.0/Models/Navigation%20Models/NavigationMenuList.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "2496">
+               </Location>
+               <Location
+                  uuid = "AE043069-EB13-4058-A211-7DBA8357C23E - 301619f1fd6eec75"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CharacterBuilder5_0.NavigationMenuList.updateMenuFromCharacterSettings(character: CharacterBuilder5_0.CharacterBase) -&gt; ()"
+                  moduleName = "CharacterBuilder5.0"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shore/Documents/Coding/CharacterBuilder5.0/CharacterBuilder5.0/Models/Navigation%20Models/NavigationMenuList.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "2612">
+               </Location>
+               <Location
+                  uuid = "AE043069-EB13-4058-A211-7DBA8357C23E - 301619f1fd6eec75"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CharacterBuilder5_0.NavigationMenuList.updateMenuFromCharacterSettings(character: CharacterBuilder5_0.CharacterBase) -&gt; ()"
+                  moduleName = "CharacterBuilder5.0"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shore/Documents/Coding/CharacterBuilder5.0/CharacterBuilder5.0/Models/Navigation%20Models/NavigationMenuList.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "2676">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

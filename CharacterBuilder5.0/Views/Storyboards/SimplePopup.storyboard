@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pjr-7Q-H6l">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pjr-7Q-H6l">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,13 +10,13 @@
         <!--Simple PopupVC-->
         <scene sceneID="vXF-NZ-rde">
             <objects>
-                <viewController id="pjr-7Q-H6l" customClass="SimplePopupVC" customModule="CharacterBuilder5" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pjr-7Q-H6l" customClass="SimplePopupVC" customModule="CharacterBuilder5_0" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" id="leb-Po-SyY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="n4q-kt-ZeH" customClass="PopupUIV" customModule="CharacterBuilder5" customModuleProvider="target">
-                                <rect key="frame" x="30" y="300.5" width="354" height="295"/>
+                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="n4q-kt-ZeH" customClass="PopupUIV" customModule="CharacterBuilder5_0" customModuleProvider="target">
+                                <rect key="frame" x="30" y="82" width="354" height="295"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="cP5-ms-1cA">
                                         <rect key="frame" x="10" y="10" width="334" height="275"/>
@@ -47,7 +47,7 @@
                                                     <fragment content="I'm the only person with 2 left feet.">
                                                         <attributes>
                                                             <color key="NSColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                            <font key="NSFont" metaFont="menu" size="14"/>
+                                                            <font key="NSFont" metaFont="menuBar"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
@@ -103,8 +103,8 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="n4q-kt-ZeH" firstAttribute="top" secondItem="leb-Po-SyY" secondAttribute="topMargin" constant="30" id="HWc-4D-myC"/>
                             <constraint firstItem="n4q-kt-ZeH" firstAttribute="leading" secondItem="2Kp-YR-GJR" secondAttribute="leading" constant="30" id="P4O-Fi-g8e"/>
-                            <constraint firstItem="n4q-kt-ZeH" firstAttribute="centerY" secondItem="leb-Po-SyY" secondAttribute="centerY" id="uEe-BE-Bbl"/>
                             <constraint firstItem="n4q-kt-ZeH" firstAttribute="centerX" secondItem="leb-Po-SyY" secondAttribute="centerX" id="y7G-mM-gyQ"/>
                             <constraint firstItem="2Kp-YR-GJR" firstAttribute="trailing" secondItem="n4q-kt-ZeH" secondAttribute="trailing" constant="30" id="yf8-R8-D0Z"/>
                         </constraints>

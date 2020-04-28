@@ -16,10 +16,10 @@ class NavigationMenuList {
 		NavigationMenuItem(menuName: .statList, 		menuSegue: .showLevelList),
 		NavigationMenuItem(menuName: .backgrounds, 		menuSegue: .showLevelList),
 		NavigationMenuItem(menuName: .iconRelationship,	menuSegue: .showLevelList),
-		NavigationMenuItem(menuName: .featList, 		menuSegue: .showOptionList),
-	//	NavigationMenuItem(menuName: .abilityList, 		menuSegue: .showOptionList),
-	//	NavigationMenuItem(menuName: .spellList, 		menuSegue: .showOptionList),
-	//	NavigationMenuItem(menuName: .equipment, 		menuSegue: .showLevelList)
+//		NavigationMenuItem(menuName: .featList, 		menuSegue: .showOptionList),
+//		NavigationMenuItem(menuName: .abilityList, 		menuSegue: .showOptionList),
+//		NavigationMenuItem(menuName: .spellList, 		menuSegue: .showOptionList),
+//		NavigationMenuItem(menuName: .equipment, 		menuSegue: .showLevelList)
 		NavigationMenuItem(menuName: .uniqueThing, 		menuSegue: .showPopup)
 	]
 	func menuList() -> [NavigationMenuItem]{
