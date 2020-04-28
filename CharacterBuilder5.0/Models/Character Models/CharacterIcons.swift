@@ -20,7 +20,11 @@ class CharacterIconMenu: Codable {
 	}
 	
 	func selectionList(_ selected: Bool) -> [CharacterIconDetail]{
-		return iconList.filter {$0.itemModified == selected}
+		if selected {
+			return iconList.filter {$0.itemModified == selected}
+		} else {
+			return iconList
+		}
 	}
 	
 	func toggleSelection(_ icon: CharacterIconDetail) {
