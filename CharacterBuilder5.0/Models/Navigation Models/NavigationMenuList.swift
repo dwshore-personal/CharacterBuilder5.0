@@ -15,7 +15,7 @@ class NavigationMenuList {
 		NavigationMenuItem(menuName: .raceList, 		menuSegue: .showSimpleList),
 		NavigationMenuItem(menuName: .statList, 		menuSegue: .showLevelList),
 		NavigationMenuItem(menuName: .backgrounds, 		menuSegue: .showLevelList),
-		NavigationMenuItem(menuName: .iconRelationship,	menuSegue: .showLevelList),
+//		NavigationMenuItem(menuName: .iconRelationship,	menuSegue: .showLevelList),
 //		NavigationMenuItem(menuName: .featList, 		menuSegue: .showOptionList),
 //		NavigationMenuItem(menuName: .abilityList, 		menuSegue: .showOptionList),
 //		NavigationMenuItem(menuName: .spellList, 		menuSegue: .showOptionList),
