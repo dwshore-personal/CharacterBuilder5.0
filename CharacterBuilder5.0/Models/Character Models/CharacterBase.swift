@@ -104,7 +104,5 @@ class CharacterBase: Codable {
 		characterUniqueThing = description
 	}
 	
-	
-	
 //	End of Class
 }

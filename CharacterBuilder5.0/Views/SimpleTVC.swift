@@ -60,22 +60,10 @@ class SimpleTVC: UITableViewController {
 		
 	}
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//		tableView.deselectRow(at: indexPath, animated: true)
 		selectedOption = cellData[indexPath.row] as LevelListItem
 		selectedOption?.toggle()
 		delegate?.updateCharacter(selectedOption!, from: cellData, for: currentMenu)
 		print(selectedOption?.itemName as Any)
-//		switch currentMenu {
-//		case .iconRelationship:
-//			let selectedIcon = CharacterIconMenu().fullList()[indexPath.row]
-//			currentCharacter?.playerCharacter?.characterIcons.toggleSelection(selectedIcon)
-//			delegate?.updateDelegateView(currentCharacter!)
-//		default:
-//			print("no unique selection process")
-//			for item in cellData {
-//				item.itemModified = (item === selectedOption)
-//			}
-//		}
 		tableView.reloadData()
 	}
     

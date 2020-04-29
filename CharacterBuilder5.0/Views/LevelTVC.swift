@@ -250,12 +250,6 @@ extension LevelTVC: LeveListDetailDelegate {
 extension LevelTVC: SimpleTVCDelegate {
 	func updateCharacter(_ selection: LevelListItem, from cellData: [LevelListItem], for currentMenu: NavigationMenuItem.MenuName) {
 		if self.currentMenu != currentMenu { print("Menu passed from SimpleDelegate does not match current menu in LevelList"); return }
-//		switch currentMenu {
-//		case .iconRelationship:
-//			self.cellData = cellData.filter { $0.itemModified == true}
-//		default:
-//			return
-//		}
 	}
 	func updateDelegateView(_ currentCharacter: CharacterData) {
 		importCellData(from: currentMenu)
