@@ -60,21 +60,22 @@ class SimpleTVC: UITableViewController {
 		
 	}
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		tableView.deselectRow(at: indexPath, animated: true)
+//		tableView.deselectRow(at: indexPath, animated: true)
 		selectedOption = cellData[indexPath.row] as LevelListItem
+		selectedOption?.toggle()
 		delegate?.updateCharacter(selectedOption!, from: cellData, for: currentMenu)
 		print(selectedOption?.itemName as Any)
-		switch currentMenu {
-		case .iconRelationship:
-			let selectedIcon = CharacterIconMenu().fullList()[indexPath.row]
-			currentCharacter?.playerCharacter?.characterIcons.toggleSelection(selectedIcon)
-			delegate?.updateDelegateView(currentCharacter!)
-		default:
-			print("no unique selection process")
-			for item in cellData {
-				item.itemModified = (item === selectedOption)
-			}
-		}
+//		switch currentMenu {
+//		case .iconRelationship:
+//			let selectedIcon = CharacterIconMenu().fullList()[indexPath.row]
+//			currentCharacter?.playerCharacter?.characterIcons.toggleSelection(selectedIcon)
+//			delegate?.updateDelegateView(currentCharacter!)
+//		default:
+//			print("no unique selection process")
+//			for item in cellData {
+//				item.itemModified = (item === selectedOption)
+//			}
+//		}
 		tableView.reloadData()
 	}
     
@@ -116,20 +117,9 @@ extension SimpleTVC {
 			cellData = CharacterClassMenu().list()
 			cellData.filter {$0 == currentClass}.first?.itemModified = true
 		case .iconRelationship:
-			if showFullList {
-				cellData = (currentCharacter?.playerCharacter?.characterIcons.fullList())!
-			} else {
-				cellData = (currentCharacter?.playerCharacter?.characterIcons.selectionList(showFullList))!
-			}
-//			let iconList = CharacterIconMenu().fullList()
-//			for icon in iconList {
-//				if currentCharacter?.playerCharacter?.characterIcons.firstIndex(of: icon) == nil {
-//					icon.itemModified = false
-//				} else {
-//					icon.itemModified = true
-//				}
-//			}
-//			cellData = iconList
+			print("icon simple menu loading")
+			let iconList = currentCharacter?.playerCharacter?.characterIcons.selectionList(false)
+			cellData = iconList!
 		default:
 			print("A non-simple list was selected")
 		}

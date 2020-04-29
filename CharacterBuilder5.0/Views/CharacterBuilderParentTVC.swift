@@ -110,18 +110,19 @@ class CharacterBuilderParentTVC: UITableViewController {
 //	MARK: Extensions
 extension CharacterBuilderParentTVC: SimpleTVCDelegate {
 	func updateCharacter(_ selection: LevelListItem, from cellData: [LevelListItem], for currentMenu: NavigationMenuItem.MenuName) {
-		selection.itemModified = true
 		switch currentMenu {
 		case .classList:
 			currentCharacter.playerCharacter?.updateClass(newClass: selection as! CharacterClassDetail)
-			mainMenu.updateMenuFromCharacterSettings(character: currentCharacter.playerCharacter!)
 		case .raceList:
 			currentCharacter.playerCharacter?.updateRace(newRace: selection as! CharacterRaceDetail)
-			mainMenu.updateMenuFromCharacterSettings(character: currentCharacter.playerCharacter!)
+		case .iconRelationship:
+			currentCharacter.playerCharacter?.updateIconList(selection as! CharacterIconDetail)
+			
 		default:
 			print("Missing appropriate criteria for -updateCharacter- protocol in BuilderParent.")
 			return
 		}
+		mainMenu.updateMenuFromCharacterSettings(character: currentCharacter.playerCharacter!)
 		for menu in mainMenu.menuList() {
 			if menu.menuName == currentMenu {
 				menu.updateMenuDescription(with: selection.itemName)

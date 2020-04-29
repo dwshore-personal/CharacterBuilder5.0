@@ -60,17 +60,24 @@ class NavigationMenuList {
 				}
 //	ICON RELATIONSHIP
 			case .iconRelationship:
-				switch character.characterIcons.selectionList(true).count {
-				case 0:
-					newDescription = "No icons have been added yet."
-					isSet = false
-				case 1...2 :
-					newDescription = "\(character.characterIcons.selectionList(true).count) icons have been set."
-					isSet = false
-				default:
+				if character.characterIcons.selectionList(true).count != 0 {
 					newDescription = "Icons have been added."
 					isSet = true
+				} else {
+					newDescription = "No icons have been added yet"
+					isSet = false
 				}
+//				switch character.characterIcons.selectionList(true).count {
+//				case 0:
+//					newDescription = "No icons have been added yet."
+//					isSet = false
+//				case 1...2 :
+//					newDescription = "\(character.characterIcons.selectionList(true).count) icons have been set."
+//					isSet = false
+//				default:
+//					newDescription = "Icons have been added."
+//					isSet = true
+//				}
 //	ONE UNIQUE THING
 			case .uniqueThing:
 				isSet = (character.characterUniqueThing != "")

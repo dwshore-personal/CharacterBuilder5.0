@@ -74,6 +74,7 @@ class LevelTVC: UITableViewController {
 			guard let backgrounds = currentCharacter?.playerCharacter?.characterBackgrounds else {return}
 			list = backgrounds
 		case .iconRelationship:
+			print("icon level menu getting imported now")
 			guard let icons = currentCharacter?.playerCharacter?.characterIcons.selectionList(true) else {return}
 			list = icons
 		default:
@@ -133,15 +134,15 @@ class LevelTVC: UITableViewController {
 			
 			switch currentMenu {
 			case .backgrounds:
-				cellData.remove(at: indexPath.row)
 				currentCharacter?.playerCharacter?.updateBackground(item as! CharacterBackgroundDetail, with: item.itemLevel)
 			case .iconRelationship:
 				item.toggle()
-				currentCharacter?.playerCharacter?.characterIcons.toggleSelection(item as! CharacterIconDetail)
+				currentCharacter?.playerCharacter?.updateIconList(item as! CharacterIconDetail)
 			default:
 				return
 			}
 			
+			cellData.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
 			return
@@ -249,12 +250,12 @@ extension LevelTVC: LeveListDetailDelegate {
 extension LevelTVC: SimpleTVCDelegate {
 	func updateCharacter(_ selection: LevelListItem, from cellData: [LevelListItem], for currentMenu: NavigationMenuItem.MenuName) {
 		if self.currentMenu != currentMenu { print("Menu passed from SimpleDelegate does not match current menu in LevelList"); return }
-		switch currentMenu {
-		case .iconRelationship:
-			self.cellData = cellData.filter { $0.itemModified == true}
-		default:
-			return
-		}
+//		switch currentMenu {
+//		case .iconRelationship:
+//			self.cellData = cellData.filter { $0.itemModified == true}
+//		default:
+//			return
+//		}
 	}
 	func updateDelegateView(_ currentCharacter: CharacterData) {
 		importCellData(from: currentMenu)

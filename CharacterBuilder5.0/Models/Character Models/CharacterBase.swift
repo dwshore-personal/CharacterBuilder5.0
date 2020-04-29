@@ -94,20 +94,11 @@ class CharacterBase: Codable {
 			selectedBackground?.itemLevel = level
 		}
 	}
-	/*
+	
 	func updateIconList(_ icon: CharacterIconDetail){
-		characterIcons.first(where: {$0 == icon})?.toggle()
-
-		if let currentIndex = characterIcons.firstIndex(of: icon) {
-			print("Icon \(icon.itemName)found. Removing it from character")
-			characterIcons.remove(at: currentIndex)
-		} else {
-			icon.itemModified = true
-			characterIcons.append(icon)
-		}
-		
+		characterIcons.toggleSelection(icon)
 	}
-	*/
+	
 	
 	func updateOneUniqueThing(_ description: String){
 		characterUniqueThing = description
