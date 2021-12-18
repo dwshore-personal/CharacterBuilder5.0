@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol SimpleTVCDelegate: class {
+protocol SimpleTVCDelegate: AnyObject {
 	func updateDelegateView(_ currentCharacter: CharacterData)
 	func updateCharacter(_ selection: LevelListItem, from cellData: [LevelListItem], for currentMenu: NavigationMenuItem.MenuName)
 }

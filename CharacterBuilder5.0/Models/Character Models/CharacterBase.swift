@@ -83,12 +83,15 @@ class CharacterBase: Codable {
 		}
 	}
 	func deleteBackground(_ background: CharacterBackgroundDetail){
+		print("CharacterBase-- deleteBackground")
 		let index = characterBackgrounds.firstIndex(of: background)
 		characterBackgrounds.remove(at: index!)
 	}
 	func updateBackground(_ background: CharacterBackgroundDetail, with level: Int){
+		print("CharacterBase-- updateBackground")
 		if let index = characterBackgrounds.firstIndex(of: background) {
-			characterBackgrounds.remove(at: index)
+			print("CharacterBase-- updateBackground-- update at index")
+			characterBackgrounds[index] = background
 		} else {
 			let selectedBackground = characterBackgrounds.filter { $0 == background}.first
 			selectedBackground?.itemLevel = level

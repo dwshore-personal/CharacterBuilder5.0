@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol SimplePopupVCDelegate: class {
+protocol SimplePopupVCDelegate: AnyObject {
 //	func simplePopupVCDelegate(createCharacterName: Bool, withName: String)
 	func simplePopupVCDelegate(update menuName: NavigationMenuItem.MenuName, with newDescription: String)
 }

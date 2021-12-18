@@ -7,7 +7,7 @@
 //
 
 import UIKit
-protocol LevelTVCDelegate: class {
+protocol LevelTVCDelegate: AnyObject {
 	func refreshLevelTVCDelegate()
 	func levelTVCDelegate(add item: LevelListItem, at index: Int)
 }

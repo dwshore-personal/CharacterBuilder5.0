@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol LevelListCellDelegate: class {
+protocol LevelListCellDelegate: AnyObject {
 	func updateLevels(for cell: LevelListCell)
 }
 class LevelListCell: UITableViewCell {

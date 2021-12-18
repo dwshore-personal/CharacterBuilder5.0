@@ -7,7 +7,7 @@
 //
 
 import UIKit
-protocol LeveListDetailDelegate: class {
+protocol LeveListDetailDelegate: AnyObject {
 	func levelListDetailDidCancel(_ controller: LevelListDetailVC)
 	func levelListDetail(_ controller: LevelListDetailVC, didFinishAdding item: LevelListItem)
 	func levelListDetail(_ controller: LevelListDetailVC, didFinishEditing item: LevelListItem)
