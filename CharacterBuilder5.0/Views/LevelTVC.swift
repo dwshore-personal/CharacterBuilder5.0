@@ -134,7 +134,7 @@ class LevelTVC: UITableViewController {
 			switch currentMenu {
 			case .backgrounds:
 				cellData.remove(at: indexPath.row)
-				currentCharacter?.playerCharacter?.updateBackground(item as! CharacterBackgroundDetail, with: item.itemLevel)
+				currentCharacter?.playerCharacter?.deleteBackground(item as! CharacterBackgroundDetail)
 			case .iconRelationship:
 				item.toggle()
 				currentCharacter?.playerCharacter?.characterIcons.toggleSelection(item as! CharacterIconDetail)

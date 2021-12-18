@@ -96,6 +96,9 @@ class CharacterBase: Codable {
 			let selectedBackground = characterBackgrounds.filter { $0 == background}.first
 			selectedBackground?.itemLevel = level
 		}
+		if level != 0 {
+			background.toggle()
+		}
 	}
 	/*
 	func updateIconList(_ icon: CharacterIconDetail){
