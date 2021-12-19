@@ -59,6 +59,12 @@ class LevelListDetailVC: UIViewController {
 				title = "Add Item"
 			}
 			addBarButton.isEnabled = true
+		case .iconRelationship:
+			textField.isHidden = false
+			detailTitle.isHidden = false
+			detailDescription.isHidden = false
+			
+			
 		default:
 			textField.isHidden = true
 			addBarButton.isEnabled = false

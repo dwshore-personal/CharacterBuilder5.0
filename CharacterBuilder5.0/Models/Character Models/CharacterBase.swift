@@ -21,17 +21,17 @@ class CharacterBase: Codable {
 	var charName: String
 	var charClass: CharacterClassDetail?
 	var charRace: CharacterRaceDetail?
-	var charStats: [CharacterStatDetail]
+	var charStats: CharacterStatMenu
 	var charStatsModified: Bool
-	var characterBackgrounds: [CharacterBackgroundDetail]
+	var characterBackgrounds: CharacterBackgroundMenu
 	var characterIcons: CharacterIconMenu
 	var characterUniqueThing: String
 	init(charName: String) {
 		self.charName = charName
 		charID = UUID().uuidString
-		charStats = CharacterStatMenu().list()
+		charStats = CharacterStatMenu()
 		charStatsModified = false
-		characterBackgrounds = []
+		characterBackgrounds = CharacterBackgroundMenu(levelListItems: [])
 		characterIcons = CharacterIconMenu()
 		characterUniqueThing = ""
 	}
@@ -63,6 +63,8 @@ class CharacterBase: Codable {
 	}
 	func updateStat(forStat: CharacterStatDetail, withLevel: Int){
 		print("CharacterBase-- updateStat-- running internal update stat")
+		charStats.updateListItem(forStat, with: withLevel)
+		/*
 		let selectedStat = charStats.filter { $0 == forStat }.first
 		selectedStat?.setLevel(newLevel: withLevel)
 		let modifiedCount = charStats.filter { $0.itemModified == true }.count
@@ -72,48 +74,27 @@ class CharacterBase: Codable {
 		} else {
 			charStatsModified = false
 		}
+		 */
 	}
 	func addBackground(_ background: CharacterBackgroundDetail) {
 		print("CharacterBase-- addBackground")
-		let index = characterBackgrounds.count
-		if index == 0 {
-			characterBackgrounds.append(background)
-		} else {
-			characterBackgrounds.insert(background, at: index)
-		}
+		characterBackgrounds.addListItem(background)
 	}
 	func deleteBackground(_ background: CharacterBackgroundDetail){
 		print("CharacterBase-- deleteBackground")
-		let index = characterBackgrounds.firstIndex(of: background)
-		characterBackgrounds.remove(at: index!)
+		characterBackgrounds.deleteListItem(background)
 	}
 	func updateBackground(_ background: CharacterBackgroundDetail, with level: Int){
 		print("CharacterBase-- updateBackground")
-		if let index = characterBackgrounds.firstIndex(of: background) {
-			print("CharacterBase-- updateBackground-- update at index")
-			characterBackgrounds[index] = background
-		} else {
-			let selectedBackground = characterBackgrounds.filter { $0 == background}.first
-			selectedBackground?.itemLevel = level
-		}
-		if level != 0 {
-			background.toggle()
-		}
+		characterBackgrounds.updateListItem(background, with: level)
 	}
-	/*
-	func updateIconList(_ icon: CharacterIconDetail){
-		characterIcons.first(where: {$0 == icon})?.toggle()
 
-		if let currentIndex = characterIcons.firstIndex(of: icon) {
-			print("Icon \(icon.itemName)found. Removing it from character")
-			characterIcons.remove(at: currentIndex)
-		} else {
-			icon.itemModified = true
-			characterIcons.append(icon)
-		}
-		
+	func updateIconList(_ icon: CharacterIconDetail, level: Int){
+		print("CharacterBase-- updateIcon")
+		characterIcons.updateListItem(icon, with: level)
 	}
-	*/
+	
+
 	
 	func updateOneUniqueThing(_ description: String){
 		characterUniqueThing = description

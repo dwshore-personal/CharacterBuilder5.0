@@ -69,10 +69,10 @@ class LevelTVC: UITableViewController {
 		switch currentMenu {
 		case .statList:
 			guard let stats = currentCharacter?.playerCharacter?.charStats else {return}
-			list = stats
+			list = stats.fullList()
 		case .backgrounds:
 			guard let backgrounds = currentCharacter?.playerCharacter?.characterBackgrounds else {return}
-			list = backgrounds
+			list = backgrounds.fullList()
 		case .iconRelationship:
 			guard let icons = currentCharacter?.playerCharacter?.characterIcons.selectionList(true) else {return}
 			list = icons
@@ -194,11 +194,11 @@ extension LevelTVC: LevelListCellDelegate {
 		currentData.itemLevel = Int(cell.levelStepperOutlet.value)
 		switch currentMenu {
 		case .statList:
-			let currentStat = (currentCharacter?.playerCharacter?.charStats.filter { $0.itemName == currentData.itemName }.first)!
-			currentCharacter?.playerCharacter?.updateStat(forStat: currentStat, withLevel: currentData.itemLevel)
+			let currentStat = (currentCharacter?.playerCharacter?.charStats.fullList().filter { $0.itemName == currentData.itemName }.first)!
+			currentCharacter?.playerCharacter?.updateStat(forStat: currentStat as! CharacterStatDetail , withLevel: currentData.itemLevel)
 		case .backgrounds:
-			let currentBackground = currentCharacter?.playerCharacter?.characterBackgrounds.filter {$0.itemName == currentData.itemName}.first
-			currentCharacter?.playerCharacter?.updateBackground(currentBackground!, with: currentData.itemLevel)
+			let currentBackground = currentCharacter?.playerCharacter?.characterBackgrounds.fullList().filter {$0.itemName == currentData.itemName}.first
+			currentCharacter?.playerCharacter?.updateBackground(currentBackground! as! CharacterBackgroundDetail, with: currentData.itemLevel)
 			return
 			
 		default:
@@ -217,7 +217,7 @@ extension LevelTVC: LeveListDetailDelegate {
 		switch currentMenu {
 		case .backgrounds:
 			currentCharacter?.playerCharacter?.addBackground(item as! CharacterBackgroundDetail)
-			let rowIndex = ((currentCharacter?.playerCharacter?.characterBackgrounds.count)!) - 1
+			let rowIndex = ((currentCharacter?.playerCharacter?.characterBackgrounds.fullList().count)!) - 1
 			let indexPath = IndexPath(row: rowIndex, section: 0)
 			let indexPaths = [indexPath]
 			cellData.insert(item, at: rowIndex)
@@ -232,7 +232,7 @@ extension LevelTVC: LeveListDetailDelegate {
 	func levelListDetail(_ controller: LevelListDetailVC, didFinishEditing item: LevelListItem) {
 		switch currentMenu {
 		case .backgrounds:
-			let currentList = currentCharacter?.playerCharacter?.characterBackgrounds
+			let currentList = currentCharacter?.playerCharacter?.characterBackgrounds.fullList()
 			if let index = currentList?.firstIndex(of: item as! CharacterBackgroundDetail) {
 				let indexPath = IndexPath(row: index, section: 0)
 				if let cell = tableView.cellForRow(at: indexPath) {

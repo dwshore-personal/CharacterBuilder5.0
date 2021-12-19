@@ -7,8 +7,8 @@
 //
 
 import Foundation
-class CharacterStatMenu: Codable {
-	private var statList: [CharacterStatDetail] = [
+class CharacterStatMenu: LevelListArray {
+	var statList: [CharacterStatDetail] = [
 		CharacterStatDetail(characterStat: .STR, baseLevel: 8, statDescription: "Smash", statSelected: false),
 		CharacterStatDetail(characterStat: .CON),
 		CharacterStatDetail(characterStat: .DEX),
@@ -16,9 +16,20 @@ class CharacterStatMenu: Codable {
 		CharacterStatDetail(characterStat: .WIS),
 		CharacterStatDetail(characterStat: .CHA)
 	]
+	
+	init() {
+		super.init(levelListItems: statList)
+		self.levelListItems = statList
+	}
+	required init(from decoder: Decoder) throws {
+		fatalError("init(from:) has not been implemented")
+	}
+	/*
 	func list() -> [CharacterStatDetail]{
 		return statList
 	}
+	 */
+	
 }
 
 

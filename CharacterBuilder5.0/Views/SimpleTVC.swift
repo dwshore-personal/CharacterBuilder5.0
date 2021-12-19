@@ -63,12 +63,14 @@ class SimpleTVC: UITableViewController {
 		tableView.deselectRow(at: indexPath, animated: true)
 		selectedOption = cellData[indexPath.row] as LevelListItem
 		delegate?.updateCharacter(selectedOption!, from: cellData, for: currentMenu)
-		print(selectedOption?.itemName as Any)
+		print("Selected: "+selectedOption!.itemName as String)
 		switch currentMenu {
 		case .iconRelationship:
+//			let selectedIcon = CharacterIconMenu().selectionList(true)[indexPath.row]
 			let selectedIcon = CharacterIconMenu().fullList()[indexPath.row]
 			currentCharacter?.playerCharacter?.characterIcons.toggleSelection(selectedIcon)
 			delegate?.updateDelegateView(currentCharacter!)
+			cellData[indexPath.row].toggle()
 		default:
 			print("no unique selection process")
 			for item in cellData {

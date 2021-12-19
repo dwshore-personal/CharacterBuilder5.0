@@ -20,7 +20,9 @@ class LevelListArray: Codable, Equatable {
 		self.levelListItems = levelListItems
 	}
 	
-	
+	func fullList() -> [LevelListItem]{
+		return levelListItems
+	}
 	func addListItem(_ listItem: LevelListItem) {
 		let index = levelListItems.count
 		if index == 0 {
@@ -49,6 +51,13 @@ class LevelListArray: Codable, Equatable {
 			print("[LevelListArray]-- toggle selected")
 			listItem.toggle()
 		}
+	}
+	func selectionList(_ selected: Bool) -> [LevelListItem]{
+		return levelListItems.filter {$0.itemModified == selected}
+	}
+	
+	func toggleSelection(_ icon: LevelListItem) {
+		levelListItems.filter { $0 === icon }.first?.itemModified = !icon.itemModified
 	}
 
 	

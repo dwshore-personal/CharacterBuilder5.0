@@ -7,7 +7,9 @@
 //
 
 import Foundation
-
+class CharacterBackgroundMenu: LevelListArray{
+	
+}
 class CharacterBackgroundDetail: LevelListItem {
 
 }
