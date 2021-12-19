@@ -15,7 +15,7 @@ class NavigationMenuList {
 		NavigationMenuItem(menuName: .raceList, 		menuSegue: .showSimpleList),
 		NavigationMenuItem(menuName: .statList, 		menuSegue: .showLevelList),
 		NavigationMenuItem(menuName: .backgrounds, 		menuSegue: .showLevelList),
-//		NavigationMenuItem(menuName: .iconRelationship,	menuSegue: .showLevelList),
+		NavigationMenuItem(menuName: .iconRelationship,	menuSegue: .showLevelList),
 //		NavigationMenuItem(menuName: .featList, 		menuSegue: .showOptionList),
 //		NavigationMenuItem(menuName: .abilityList, 		menuSegue: .showOptionList),
 //		NavigationMenuItem(menuName: .spellList, 		menuSegue: .showOptionList),
@@ -47,12 +47,12 @@ class NavigationMenuList {
 				}
 //	BACKGROUNDS
 			case .backgrounds:
-				switch character.characterBackgrounds.count {
+				switch character.characterBackgrounds.levelListItems.count {
 				case 0:
 					newDescription = "No backgrounds have been added yet."
 					isSet = false
 				case 1...3 :
-					newDescription = "\(character.characterBackgrounds.count) backgrounds have been set."
+					newDescription = "\(character.characterBackgrounds.levelListItems.count) backgrounds have been set."
 					isSet = false
 				default:
 					newDescription = "Backgrounds have been added."
