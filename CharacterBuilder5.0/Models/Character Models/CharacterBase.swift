@@ -19,88 +19,88 @@ class CharacterData {
 class CharacterBase: Codable {
 	var charID: String!
 	var charName: String
-	var charClass: CharacterClassDetail?
-	var charRace: CharacterRaceDetail?
-	var charStats: CharacterStatMenu
+	var elementList: [NavigationMenuItem]
+	var charClass: LevelListItem?
+	var charRace: LevelListItem?
+	var charStats: LevelListArray?
 	var charStatsModified: Bool
-	var characterBackgrounds: CharacterBackgroundMenu
-	var characterIcons: CharacterIconMenu
+	var characterBackgrounds: LevelListArray?
+	var characterIcons: LevelListArray?
 	var characterUniqueThing: String
 	init(charName: String) {
 		self.charName = charName
 		charID = UUID().uuidString
-		charStats = CharacterStatMenu()
+		charStats = LevelListArray(levelListItems: PublicLists().statList)
 		charStatsModified = false
-		characterBackgrounds = CharacterBackgroundMenu(levelListItems: [])
-		characterIcons = CharacterIconMenu()
+		characterBackgrounds = LevelListArray(levelListItems: [])
+		characterIcons = LevelListArray(levelListItems: PublicLists().iconList)
 		characterUniqueThing = ""
-	}
-	public enum FeatPrereq: String, Codable {
-			case None
-			case CharRace
-			case CharClass
-			/*
-			case Talent
-			case BattleCry
-			case SpellOrSong
-			case Spell
-			case Maneuver
-			case Companion
-			case Power
-			*/
+		elementList = NavigationMenuList().menuList()
 	}
 	func updateName(new name:String){
 		print("CharacterBase-- updateName-- running internal update name")
 		charName = name
 	}
-	func updateClass(newClass selection: CharacterClassDetail ) {
-		print("CharacterBase-- updateClass-- running internal update class")
-		charClass = selection as CharacterClassDetail
-	}
-	func updateRace(newRace selection: CharacterRaceDetail){
-		print("CharacterBase-- updateRace-- running internal update race")
-		charRace = selection as CharacterRaceDetail
-	}
-	func updateStat(forStat: CharacterStatDetail, withLevel: Int){
-		print("CharacterBase-- updateStat-- running internal update stat")
-		charStats.updateListItem(forStat, with: withLevel)
-		/*
-		let selectedStat = charStats.filter { $0 == forStat }.first
-		selectedStat?.setLevel(newLevel: withLevel)
-		let modifiedCount = charStats.filter { $0.itemModified == true }.count
-		if modifiedCount == charStats.count {
-			charStatsModified = true
-			print("All stats have been set. Flipping the stats modified switch.")
-		} else {
-			charStatsModified = false
-		}
-		 */
-	}
-	func addBackground(_ background: CharacterBackgroundDetail) {
-		print("CharacterBase-- addBackground")
-		characterBackgrounds.addListItem(background)
-	}
-	func deleteBackground(_ background: CharacterBackgroundDetail){
-		print("CharacterBase-- deleteBackground")
-		characterBackgrounds.deleteListItem(background)
-	}
-	func updateBackground(_ background: CharacterBackgroundDetail, with level: Int){
-		print("CharacterBase-- updateBackground")
-		characterBackgrounds.updateListItem(background, with: level)
-	}
-
-	func updateIconList(_ icon: CharacterIconDetail, level: Int){
-		print("CharacterBase-- updateIcon")
-		characterIcons.updateListItem(icon, with: level)
-	}
-	
-
-	
 	func updateOneUniqueThing(_ description: String){
 		characterUniqueThing = description
 	}
 	
-	
-	
+	func addElement(targetElement selection: LevelListItem, elementType: NavigationMenuItem.MenuName, level: Int){
+		print("CharacterBase-- addElement-- adding new element type: " + elementType.rawValue + selection.itemName)
+		switch elementType {
+		case .statList:
+			charStats?.updateListItem(selection, with: level)
+		case .iconRelationship:
+			characterIcons?.updateListItem(selection, with: level)
+		case .featList:
+			print("Missing Feat element")
+		case .backgrounds:
+			characterBackgrounds?.addListItem(selection)
+		default:
+			print("CharacterBase-- addElement-- selected menu item not applicable")
+		}
+	}
+	func deleteElement(targetElement selection: LevelListItem, elementType: NavigationMenuItem.MenuName){
+		print("CharacterBase-- deleteElement-- removing selection: " + selection.itemName)
+		switch elementType {
+		case .featList:
+			print(elementType.rawValue)
+		case .backgrounds:
+			characterBackgrounds?.deleteListItem(selection)
+		case .iconRelationship:
+			characterIcons?.deleteListItem(selection)
+		default:
+			print("CharacterBase-- deleteElement-- selected menu item not applicable")
+		}
+	}
+	func updateElement(targetElement selection: LevelListItem, elementType: NavigationMenuItem.MenuName, level: Int = 0){
+		print("CharacterBase-- updateElement-- updating: " + selection.itemName + " with type: " + elementType.rawValue)
+		
+		switch elementType {
+		case .featList:
+			print(elementType.rawValue)
+		case .classList:
+			charClass = selection
+		case .raceList:
+			charRace = selection
+		case .statList:
+			charStats?.updateListItem(selection, with: level)
+// CHECK IF ALL STATS HAVE BEEN MODIFIED
+			var modifiedStats: Int = 0
+			for stat in charStats!.fullList() {
+				if stat.itemModified {
+					modifiedStats += 1
+				}
+			}
+			charStatsModified = {modifiedStats == charStats?.fullList().count}()
+		case .backgrounds:
+			characterBackgrounds?.updateListItem(selection, with: level)
+		case .iconRelationship:
+			characterIcons?.updateListItem(selection, with: level)
+		default:
+			print("CharacterBase-- updateElement-- selected menu item not applicable")
+		}
+		
+	}	
 //	End of Class
 }

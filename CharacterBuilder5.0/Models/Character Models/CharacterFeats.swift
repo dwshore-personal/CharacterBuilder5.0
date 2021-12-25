@@ -8,6 +8,7 @@
 
 import Foundation
 class CharacterFeatMenu: Codable {
+	/*
 	private var featList: [CharacterFeatDetail] = [
 		CharacterFeatDetail(itemName: "Roll With It"),
 		CharacterFeatDetail(itemName: "Spiky Bastard"),
@@ -25,6 +26,7 @@ class CharacterFeatMenu: Codable {
 //		feat.itemModified = !feat.itemModified
 		featList.filter {$0 === feat}.first?.itemModified = !feat.itemModified
 	}
+	 */
 }
 
 class CharacterFeatDetail: LevelListItem {

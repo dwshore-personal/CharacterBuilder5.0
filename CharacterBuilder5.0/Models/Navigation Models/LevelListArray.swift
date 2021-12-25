@@ -14,15 +14,28 @@ class LevelListArray: Codable, Equatable {
 
 	}
 	var levelListItems: [LevelListItem]
+	var selectionLimit: Int?
+	var isSet: Bool?
+	
 	
 	
 	init(levelListItems: [LevelListItem]) {
 		self.levelListItems = levelListItems
 	}
+	init(levelListItems: [LevelListItem], selectionLimit: Int) {
+		self.levelListItems = levelListItems
+		self.selectionLimit = selectionLimit
+	}
 	
+//	RETURN LISTS
 	func fullList() -> [LevelListItem]{
 		return levelListItems
 	}
+	func selectionList(_ selected: Bool) -> [LevelListItem]{
+		return levelListItems.filter {$0.itemModified == selected}
+	}
+	
+//	MAKE CHANGES TO LISTS
 	func addListItem(_ listItem: LevelListItem) {
 		let index = levelListItems.count
 		if index == 0 {
@@ -47,17 +60,22 @@ class LevelListArray: Codable, Equatable {
 			let selectedListItem = levelListItems.filter { $0 == listItem}.first
 			selectedListItem?.itemLevel = level
 		}
-		if level != 0 {
-			print("[LevelListArray]-- toggle selected")
-			listItem.toggle()
-		}
+		listItem.setSelection(isSelected: (level != listItem.itemBaseLevel))
 	}
-	func selectionList(_ selected: Bool) -> [LevelListItem]{
-		return levelListItems.filter {$0.itemModified == selected}
+	
+// HANDLE SELECTIONS
+	func selectItem(for selectedItem: LevelListItem) {
+		for item in levelListItems {
+			if item === selectedItem {
+				item.setSelection(isSelected: true)
+			} else {
+				item.setSelection(isSelected: false)
+			}
+		}
 	}
 	
 	func toggleSelection(_ icon: LevelListItem) {
-		levelListItems.filter { $0 === icon }.first?.itemModified = !icon.itemModified
+		levelListItems.filter { $0 === icon }.first?.toggle()
 	}
 
 	

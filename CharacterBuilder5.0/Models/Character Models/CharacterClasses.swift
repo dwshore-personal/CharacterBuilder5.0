@@ -7,18 +7,16 @@
 //
 
 import Foundation
-class CharacterClassMenu: Codable {
-	private var classList: [CharacterClassDetail] = [
-		CharacterClassDetail(itemName: "Barbarian", itemDescription: "Heavy hitter", itemSelected: false),
-		CharacterClassDetail(itemName: "Bard", itemDescription: "Sweet talker", itemSelected: false),
-		CharacterClassDetail(itemName: "Wizard", itemDescription: "Wise ass", itemSelected: false)
+class CharacterClassMenu: LevelListArray {
+/*
+	private var classList: [LevelListItem] = [
+		LevelListItem(itemName: "Barbarian", itemDescription: "Heavy hitter", itemSelected: false),
+		LevelListItem(itemName: "Bard", itemDescription: "Sweet talker", itemSelected: false),
+		LevelListItem(itemName: "Wizard", itemDescription: "Wise ass", itemSelected: false)
 	]
 	
-	func list() -> [CharacterClassDetail] {
-		return classList
-	}
-
-	func selectClass(for classItem: CharacterClassDetail) {
+	
+	func selectClass(for classItem: LevelListItem) {
 		for item in classList {
 			if item === classItem {
 				item.itemModified = true
@@ -28,13 +26,13 @@ class CharacterClassMenu: Codable {
 		}
 	}
 
-
+*/
 }
 
-
+/*
 class CharacterClassDetail: LevelListItem {
 	
-/*
+
 	var hpModifier: Int?
 	var acModifierA: [String]?
 	var acModifierB: [String]?
@@ -76,5 +74,6 @@ class CharacterClassDetail: LevelListItem {
 	required init(from decoder: Decoder) throws {
 		fatalError("init(from:) has not been implemented")
 	}
-*/
+
 }
+*/

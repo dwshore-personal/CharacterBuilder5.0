@@ -16,18 +16,62 @@ class LevelListItem: Codable, Equatable {
 	var itemDescription: String
 	var itemLevel: Int
 	var itemModified: Bool
-	var baseLevel: Int
+	var itemBaseLevel: Int
+	var classHPModifier: Int?
+	var classACModifierA: [String]?
+	var classACModifierB: [String]?
+	var classMDModifier: [String]?
+	var classPDModifier: [String]?
+//	var classRecoveryDiceType: recoveryDiceType
+	var classRecoveryDiceCount: Int?
+	var classMeleeAttack: String?
+	var classMeleeHit: String?
+	var classMeleeMiss: String?
+	var classRangeAttack: String?
+	var classRangeHit: String?
+	var classRangeMiss: String?
+	var classACBonusA: Int?
+	var classACBonusB: Int?
+	var classPDBonus: Int?
+	var classMDBonus: Int?
+	var listItemType: NavigationMenuItem.MenuName?
+//	var featClass:
+//	var featRace: PublicLists().raceList
+//	var featTier: Tier
+//	enum Tier: String, Codable {
+//		case Adventurer
+//		case Champion
+//		case Epic
+//	}
+	enum Stat: String, Codable, CaseIterable{
+		case STR = "Strength"
+		case CON = "Constitution"
+		case DEX = "Dexterity"
+		case INT = "Intelligence"
+		case WIS = "Wisdom"
+		case CHA = "Charisma"
+	}
+	
 	init(itemName: String, itemDescription: String = "", itemLevel: Int = 0,itemSelected: Bool = false, baseLevel: Int = 0) {
 		self.itemName = itemName
 		self.itemDescription = itemDescription
 		self.itemLevel = itemLevel
 		self.itemModified = itemSelected
-		self.baseLevel = baseLevel
+		self.itemBaseLevel = baseLevel
 	}
+	init(characterStat: Stat, baseLevel: Int = 8, statDescription: String = "", statSelected: Bool = false){
+		let stat = characterStat
+		self.itemName = stat.rawValue
+		self.itemBaseLevel = baseLevel
+		self.itemDescription = statDescription
+		self.itemModified = statSelected
+		self.itemLevel = baseLevel
+	}
+	
 	
 	func setLevel(newLevel: Int) {
 		self.itemLevel = newLevel
-		if self.itemLevel != baseLevel {
+		if self.itemLevel != itemBaseLevel {
 			self.itemModified = true
 		} else {
 			self.itemModified = false
@@ -35,5 +79,8 @@ class LevelListItem: Codable, Equatable {
 	}
 	func toggle(){
 		itemModified = !itemModified
+	}
+	func setSelection(isSelected: Bool){
+		itemModified = isSelected
 	}
 }

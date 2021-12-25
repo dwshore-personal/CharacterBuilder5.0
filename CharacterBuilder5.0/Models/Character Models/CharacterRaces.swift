@@ -9,15 +9,16 @@
 import Foundation
 //		Used in the character creation and updating models and methods
 class CharacterRaceMenu: Codable {
-	private var raceList: [CharacterRaceDetail] = [
-		CharacterRaceDetail(itemName: "Human", itemDescription: "Boring", itemSelected: false),
-		CharacterRaceDetail(itemName: "Elf", itemDescription: "Jumpy", itemSelected: false),
-		CharacterRaceDetail(itemName: "Dwarf", itemDescription: "Short", itemSelected: false)
+/*
+	private var raceList: [LevelListItem] = [
+		LevelListItem(itemName: "Human", itemDescription: "Boring", itemSelected: false),
+		LevelListItem(itemName: "Elf", itemDescription: "Jumpy", itemSelected: false),
+		LevelListItem(itemName: "Dwarf", itemDescription: "Short", itemSelected: false)
 	]
-	func list() -> [CharacterRaceDetail] {
+	func list() -> [LevelListItem] {
 		return raceList
 	}
-	func selectRace(for raceItem: CharacterRaceDetail){
+	func selectRace(for raceItem: LevelListItem){
 		for item in raceList {
 			if item === raceItem {
 				item.itemModified = true
@@ -26,6 +27,7 @@ class CharacterRaceMenu: Codable {
 			}
 		}
 	}
+ */
 }
 
 //		Used to update the character itself

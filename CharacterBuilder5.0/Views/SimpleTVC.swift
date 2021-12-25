@@ -35,17 +35,17 @@ class SimpleTVC: UITableViewController {
     }
 
     // MARK: - Table view data source
-
+//	NUMBER OF SECTIONS
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+//	NUMBER OF ROWS IN SECTION
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
 		return cellData.count
     }
-
+//	LOAD CELL DATA
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleCell", for: indexPath)
 		let cellInfo = cellData[indexPath.row]
@@ -54,11 +54,13 @@ class SimpleTVC: UITableViewController {
 		configureCheckmark(for: cell, with: cellInfo)
         return cell
     }
+//	ACCESSORY BUTTON TAP
 	override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
 		selectedOption = cellData[indexPath.row]
 		performSegue(withIdentifier: "showLevelDetail", sender: self)
 		
 	}
+//	SELECTION PROCESS
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
 		selectedOption = cellData[indexPath.row] as LevelListItem
@@ -66,9 +68,8 @@ class SimpleTVC: UITableViewController {
 		print("Selected: "+selectedOption!.itemName as String)
 		switch currentMenu {
 		case .iconRelationship:
-//			let selectedIcon = CharacterIconMenu().selectionList(true)[indexPath.row]
-			let selectedIcon = CharacterIconMenu().fullList()[indexPath.row]
-			currentCharacter?.playerCharacter?.characterIcons.toggleSelection(selectedIcon)
+			let selectedIcon = PublicLists().iconList[indexPath.row]
+			currentCharacter?.playerCharacter?.characterIcons?.toggleSelection(selectedIcon)
 			delegate?.updateDelegateView(currentCharacter!)
 			cellData[indexPath.row].toggle()
 		default:
@@ -82,7 +83,7 @@ class SimpleTVC: UITableViewController {
     
 
     // MARK: - Navigation
-
+//	PREP SEGUE
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		switch segue.identifier {
@@ -97,6 +98,7 @@ class SimpleTVC: UITableViewController {
 }
 
 extension SimpleTVC {
+//	CONFIGURE CHECKMARK
 	func configureCheckmark( for cell: UITableViewCell, with listItem: LevelListItem) {
 		cell.accessoryType = .detailButton
 		if listItem.itemModified {
@@ -111,27 +113,18 @@ extension SimpleTVC {
 		switch currentMenu {
 		case .raceList:
 			let currentRace = currentCharacter?.playerCharacter?.charRace
-			cellData = CharacterRaceMenu().list()
+			cellData = PublicLists().raceList
 			cellData.filter {$0 == currentRace}.first?.itemModified = true
 		case .classList:
 			let currentClass = currentCharacter?.playerCharacter?.charClass
-			cellData = CharacterClassMenu().list()
+			cellData = PublicLists().classList
 			cellData.filter {$0 == currentClass}.first?.itemModified = true
 		case .iconRelationship:
 			if showFullList {
-				cellData = (currentCharacter?.playerCharacter?.characterIcons.fullList())!
+				cellData = (currentCharacter?.playerCharacter?.characterIcons?.fullList())!
 			} else {
-				cellData = (currentCharacter?.playerCharacter?.characterIcons.selectionList(showFullList))!
+				cellData = (currentCharacter?.playerCharacter?.characterIcons?.selectionList(showFullList))!
 			}
-//			let iconList = CharacterIconMenu().fullList()
-//			for icon in iconList {
-//				if currentCharacter?.playerCharacter?.characterIcons.firstIndex(of: icon) == nil {
-//					icon.itemModified = false
-//				} else {
-//					icon.itemModified = true
-//				}
-//			}
-//			cellData = iconList
 		default:
 			print("A non-simple list was selected")
 		}

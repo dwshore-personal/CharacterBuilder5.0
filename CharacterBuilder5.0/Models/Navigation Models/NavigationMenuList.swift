@@ -47,29 +47,33 @@ class NavigationMenuList {
 				}
 //	BACKGROUNDS
 			case .backgrounds:
-				switch character.characterBackgrounds.levelListItems.count {
-				case 0:
-					newDescription = "No backgrounds have been added yet."
-					isSet = false
-				case 1...3 :
-					newDescription = "\(character.characterBackgrounds.levelListItems.count) backgrounds have been set."
-					isSet = false
-				default:
-					newDescription = "Backgrounds have been added."
-					isSet = true
+				if let backgroundCount = character.characterBackgrounds?.levelListItems.count {
+					switch backgroundCount {
+					case 0:
+						newDescription = "No backgrounds have been added yet."
+						isSet = false
+					case 1...3 :
+						newDescription = "\(backgroundCount) backgrounds have been set."
+						isSet = false
+					default:
+						newDescription = "Backgrounds have been added."
+						isSet = true
+					}
 				}
 //	ICON RELATIONSHIP
 			case .iconRelationship:
-				switch character.characterIcons.selectionList(true).count {
-				case 0:
-					newDescription = "No icons have been added yet."
-					isSet = false
-				case 1...2 :
-					newDescription = "\(character.characterIcons.selectionList(true).count) icons have been set."
-					isSet = false
-				default:
-					newDescription = "Icons have been added."
-					isSet = true
+				if let iconCount = character.characterIcons?.selectionList(true).count {
+					switch iconCount {
+					case 0:
+						newDescription = "No icons have been added yet."
+						isSet = false
+					case 1...2 :
+						newDescription = "\(iconCount) icons have been set."
+						isSet = false
+					default:
+						newDescription = "Icons have been added."
+						isSet = true
+					}
 				}
 //	ONE UNIQUE THING
 			case .uniqueThing:
@@ -80,6 +84,9 @@ class NavigationMenuList {
 //				} else {
 					newDescription = character.characterUniqueThing
 //				}
+//	FEAT
+//			case .featList
+//	DEFAULT
 			default:
 				return
 			}

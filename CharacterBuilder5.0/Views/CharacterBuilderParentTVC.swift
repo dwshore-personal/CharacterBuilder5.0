@@ -113,10 +113,10 @@ extension CharacterBuilderParentTVC: SimpleTVCDelegate {
 		selection.itemModified = true
 		switch currentMenu {
 		case .classList:
-			currentCharacter.playerCharacter?.updateClass(newClass: selection as! CharacterClassDetail)
+			currentCharacter.playerCharacter?.updateElement(targetElement: selection, elementType: .classList)
 			mainMenu.updateMenuFromCharacterSettings(character: currentCharacter.playerCharacter!)
 		case .raceList:
-			currentCharacter.playerCharacter?.updateRace(newRace: selection as! CharacterRaceDetail)
+			currentCharacter.playerCharacter?.updateElement(targetElement: selection, elementType: .raceList)
 			mainMenu.updateMenuFromCharacterSettings(character: currentCharacter.playerCharacter!)
 		default:
 			print("Missing appropriate criteria for -updateCharacter- protocol in BuilderParent.")

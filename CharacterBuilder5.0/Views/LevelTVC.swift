@@ -74,7 +74,7 @@ class LevelTVC: UITableViewController {
 			guard let backgrounds = currentCharacter?.playerCharacter?.characterBackgrounds else {return}
 			list = backgrounds.fullList()
 		case .iconRelationship:
-			guard let icons = currentCharacter?.playerCharacter?.characterIcons.selectionList(true) else {return}
+			guard let icons = currentCharacter?.playerCharacter?.characterIcons?.selectionList(true) else {return}
 			list = icons
 		default:
 			print("A non-level menu was selected but went to the level viewer")
@@ -134,10 +134,10 @@ class LevelTVC: UITableViewController {
 			switch currentMenu {
 			case .backgrounds:
 				cellData.remove(at: indexPath.row)
-				currentCharacter?.playerCharacter?.deleteBackground(item as! CharacterBackgroundDetail)
+				currentCharacter?.playerCharacter?.deleteElement(targetElement: item, elementType: .backgrounds)
 			case .iconRelationship:
 				item.toggle()
-				currentCharacter?.playerCharacter?.characterIcons.toggleSelection(item as! CharacterIconDetail)
+				currentCharacter?.playerCharacter?.characterIcons?.toggleSelection(item)
 			default:
 				return
 			}
@@ -194,13 +194,16 @@ extension LevelTVC: LevelListCellDelegate {
 		currentData.itemLevel = Int(cell.levelStepperOutlet.value)
 		switch currentMenu {
 		case .statList:
-			let currentStat = (currentCharacter?.playerCharacter?.charStats.fullList().filter { $0.itemName == currentData.itemName }.first)!
-			currentCharacter?.playerCharacter?.updateStat(forStat: currentStat as! CharacterStatDetail , withLevel: currentData.itemLevel)
+//			let currentStat = (currentCharacter?.playerCharacter?.charStats?.fullList().filter { $0.itemName == currentData.itemName }.first)!
+			currentCharacter?.playerCharacter?.updateElement(targetElement: currentData, elementType: .statList, level: currentData.itemLevel)
 		case .backgrounds:
-			let currentBackground = currentCharacter?.playerCharacter?.characterBackgrounds.fullList().filter {$0.itemName == currentData.itemName}.first
-			currentCharacter?.playerCharacter?.updateBackground(currentBackground! as! CharacterBackgroundDetail, with: currentData.itemLevel)
+//			let currentBackground = currentCharacter?.playerCharacter?.characterBackgrounds?.fullList().filter {$0.itemName == currentData.itemName}.first
+			currentCharacter?.playerCharacter?.updateElement(targetElement: currentData, elementType: .backgrounds, level: currentData.itemLevel)
 			return
-			
+		case .iconRelationship:
+//			let currentIcon = currentCharacter?.playerCharacter?.characterIcons?.fullList().filter({ $0.itemName == currentData.itemName }).first
+//			let currentIcon = currentCharacter?.playerCharacter?.characterIcons.selectionList(true).filter { $0.itemName == currentData.itemName }.first
+			currentCharacter?.playerCharacter?.updateElement(targetElement: currentData, elementType: .iconRelationship, level: currentData.itemLevel)
 		default:
 			print("error passing LevelListCellDelegate data to -updateLevel-")
 		}
@@ -216,8 +219,9 @@ extension LevelTVC: LeveListDetailDelegate {
 		navigationController?.popViewController(animated: true)
 		switch currentMenu {
 		case .backgrounds:
-			currentCharacter?.playerCharacter?.addBackground(item as! CharacterBackgroundDetail)
-			let rowIndex = ((currentCharacter?.playerCharacter?.characterBackgrounds.fullList().count)!) - 1
+			currentCharacter?.playerCharacter?.addElement(targetElement: item, elementType: .backgrounds, level: item.itemLevel)
+//			currentCharacter?.playerCharacter?.addBackground(item as! CharacterBackgroundDetail)
+			let rowIndex = ((currentCharacter?.playerCharacter?.characterBackgrounds?.fullList().count)!) - 1
 			let indexPath = IndexPath(row: rowIndex, section: 0)
 			let indexPaths = [indexPath]
 			cellData.insert(item, at: rowIndex)
@@ -232,7 +236,7 @@ extension LevelTVC: LeveListDetailDelegate {
 	func levelListDetail(_ controller: LevelListDetailVC, didFinishEditing item: LevelListItem) {
 		switch currentMenu {
 		case .backgrounds:
-			let currentList = currentCharacter?.playerCharacter?.characterBackgrounds.fullList()
+			let currentList = currentCharacter?.playerCharacter?.characterBackgrounds?.fullList()
 			if let index = currentList?.firstIndex(of: item as! CharacterBackgroundDetail) {
 				let indexPath = IndexPath(row: index, section: 0)
 				if let cell = tableView.cellForRow(at: indexPath) {
@@ -248,6 +252,7 @@ extension LevelTVC: LeveListDetailDelegate {
 
 extension LevelTVC: SimpleTVCDelegate {
 	func updateCharacter(_ selection: LevelListItem, from cellData: [LevelListItem], for currentMenu: NavigationMenuItem.MenuName) {
+		print("LevelTVC-- DelegateCall-- updateCharacter: " + currentMenu.rawValue)
 		if self.currentMenu != currentMenu { print("Menu passed from SimpleDelegate does not match current menu in LevelList"); return }
 		switch currentMenu {
 		case .iconRelationship:

@@ -8,11 +8,12 @@
 
 import Foundation
 class CharacterIconMenu: LevelListArray {
-	private var iconList: [CharacterIconDetail] = [
-	 CharacterIconDetail(itemName: "The Three"),
-	 CharacterIconDetail(itemName: "The Diabolist"),
-	 CharacterIconDetail(itemName: "The Crusader"),
-	 CharacterIconDetail(itemName: "The Priestess")
+	/*
+	private var iconList: [LevelListItem] = [
+	 LevelListItem(itemName: "The Three"),
+	 LevelListItem(itemName: "The Diabolist"),
+	 LevelListItem(itemName: "The Crusader"),
+	 LevelListItem(itemName: "The Priestess")
 	]
 
 	init() {
@@ -23,21 +24,5 @@ class CharacterIconMenu: LevelListArray {
 	required init(from decoder: Decoder) throws {
 		fatalError("init(from:) has not been implemented")
 	}
-	/*
-	func fullList() -> [CharacterIconDetail] {
-		return iconList
-	}
-	
-	func selectionList(_ selected: Bool) -> [CharacterIconDetail]{
-		return iconList.filter {$0.itemModified == selected}
-	}
-	
-	func toggleSelection(_ icon: CharacterIconDetail) {
-		iconList.filter { $0 === icon }.first?.itemModified = !icon.itemModified
-	}
 	 */
-}
-
-class CharacterIconDetail: LevelListItem {
-	
 }

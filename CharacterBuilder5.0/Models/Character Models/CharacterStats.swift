@@ -8,6 +8,7 @@
 
 import Foundation
 class CharacterStatMenu: LevelListArray {
+/*
 	var statList: [CharacterStatDetail] = [
 		CharacterStatDetail(characterStat: .STR, baseLevel: 8, statDescription: "Smash", statSelected: false),
 		CharacterStatDetail(characterStat: .CON),
@@ -29,21 +30,23 @@ class CharacterStatMenu: LevelListArray {
 		return statList
 	}
 	 */
+*/
 	
 }
 
 
 class CharacterStatDetail: LevelListItem {
+/*
 	init(characterStat: Stat, baseLevel: Int = 8, statDescription: String = "", statSelected: Bool = false){
 		self.characterStat = characterStat
-//		self.baseLevel = baseLevel
+//		self.itemBaseLevel = itemBaseLevel
 		super.init(itemName: characterStat.rawValue, itemDescription: statDescription, itemLevel: baseLevel, itemSelected: statSelected, baseLevel: baseLevel)
 	}
 	
 	required init(from decoder: Decoder) throws {
 		fatalError("init(from:) has not been implemented")
 	}
-//	var baseLevel: Int
+//	var itemBaseLevel: Int
 	var characterStat: Stat?
 	enum Stat: String, Codable, CaseIterable{
 		case STR = "Strength"
@@ -56,11 +59,12 @@ class CharacterStatDetail: LevelListItem {
 	/*
 	func setLevel(newLevel: Int) {
 		self.itemLevel = newLevel
-		if self.itemLevel != baseLevel {
+		if self.itemLevel != itemBaseLevel {
 			self.itemModified = true
 		} else {
 			self.itemModified = false
 		}
 	}
 	*/
-}
+*/
+	 }
