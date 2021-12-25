@@ -22,10 +22,10 @@ class NavigationMenuItem: NSObject, Codable {
 		case uniqueThing = "One Unique Thing"
 	}
 	public enum MenuSegue: String, Codable {
-		case showPopup = "showPopup"
-		case showSimpleList = "showSimple"
-		case showLevelList = "showLevel"
-		case showOptionList = "showOption"
+		case showPopup = "showPopup" 		//	Simple popup menu for name, unique thing, etc.
+		case showSimpleList = "showSimple"	//	List of items to select from without levels
+		case showLevelList = "showLevel"	//	List of items to select that do have levels
+		case showOptionList = "showOption"	//	Sidebar items (load, new, save, etc.)
 	}
 	var menuName: MenuName
 	var modified: Bool
