@@ -13,20 +13,6 @@ class PublicLists: Codable {
 		LevelListItem(itemName: "Spiky Bastard"),
 		LevelListItem(itemName: "Sure Cut")
 	]
-	public enum FeatPrereq: String, Codable {
-			case None
-			case CharRace
-			case CharClass
-			/*
-			case Talent
-			case BattleCry
-			case SpellOrSong
-			case Spell
-			case Maneuver
-			case Companion
-			case Power
-			*/
-	}
 	public var classList: [LevelListItem] = [
 		LevelListItem(itemName: "Barbarian", itemDescription: "Heavy hitter", itemSelected: false),
 		LevelListItem(itemName: "Bard", itemDescription: "Sweet talker", itemSelected: false),

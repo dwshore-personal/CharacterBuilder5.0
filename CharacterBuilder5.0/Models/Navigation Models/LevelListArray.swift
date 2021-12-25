@@ -10,7 +10,7 @@ import Foundation
 
 class LevelListArray: Codable, Equatable {
 	static func == (lhs: LevelListArray, rhs: LevelListArray) -> Bool {
-		return lhs.levelListItems == rhs.levelListItems
+		return lhs.levelListItems == rhs.levelListItems && lhs.selectionLimit == rhs.selectionLimit
 
 	}
 	var levelListItems: [LevelListItem]
@@ -34,6 +34,39 @@ class LevelListArray: Codable, Equatable {
 	func selectionList(_ selected: Bool) -> [LevelListItem]{
 		return levelListItems.filter {$0.itemModified == selected}
 	}
+	func featList(playerCharacter: CharacterBase, category: NavigationMenuItem.MenuName) -> [LevelListItem]{
+		var filteredFeats: [LevelListItem] = []
+		switch category{
+		case .raceList:
+			for feat in PublicLists().featList {
+				if feat.featPrereq?.charRace == playerCharacter.charRace {
+					filteredFeats.append(feat)
+				}
+			}
+		case .classList:
+			for feat in PublicLists().featList {
+				if feat.featPrereq?.charClass == playerCharacter.charClass {
+					filteredFeats.append(feat)
+				}
+			}
+		/*
+		case .abilityList:
+			for feat in PublicLists().featList {
+				if feat.featPrereq?.ability == playerCharacter.ability {
+					filteredFeats.append(feat)
+				}
+			}
+		*/
+		default:
+			for feat in PublicLists().featList {
+				if ((feat.featPrereq?.none) != nil) {
+					filteredFeats.append(feat)
+				}
+			}
+		}
+		return filteredFeats
+		
+	}
 	
 //	MAKE CHANGES TO LISTS
 	func addListItem(_ listItem: LevelListItem) {
@@ -51,7 +84,7 @@ class LevelListArray: Codable, Equatable {
 		let index = levelListItems.firstIndex(of: listItem)
 		levelListItems.remove(at: index!)
 	}
-	func updateListItem(_ listItem: LevelListItem, with level: Int){
+	func updateListItem(_ listItem: LevelListItem, with level: Int = 0){
 		if let index = levelListItems.firstIndex(of: listItem) {
 			print("[LevelListArray]-- updateListItem entire listItem")
 			levelListItems[index] = listItem

@@ -76,6 +76,9 @@ class LevelTVC: UITableViewController {
 		case .iconRelationship:
 			guard let icons = currentCharacter?.playerCharacter?.characterIcons?.selectionList(true) else {return}
 			list = icons
+		case .featList:
+			guard let feats = currentCharacter?.playerCharacter?.charFeats?.selectionList(true) else {return}
+			list = feats
 		default:
 			print("A non-level menu was selected but went to the level viewer")
 			return
@@ -237,7 +240,7 @@ extension LevelTVC: LeveListDetailDelegate {
 		switch currentMenu {
 		case .backgrounds:
 			let currentList = currentCharacter?.playerCharacter?.characterBackgrounds?.fullList()
-			if let index = currentList?.firstIndex(of: item as! CharacterBackgroundDetail) {
+			if let index = currentList?.firstIndex(of: item) {
 				let indexPath = IndexPath(row: index, section: 0)
 				if let cell = tableView.cellForRow(at: indexPath) {
 					configureLevelCell(for: cell, with: item)

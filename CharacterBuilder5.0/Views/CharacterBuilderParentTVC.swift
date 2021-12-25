@@ -118,6 +118,8 @@ extension CharacterBuilderParentTVC: SimpleTVCDelegate {
 		case .raceList:
 			currentCharacter.playerCharacter?.updateElement(targetElement: selection, elementType: .raceList)
 			mainMenu.updateMenuFromCharacterSettings(character: currentCharacter.playerCharacter!)
+		case .featList:
+			currentCharacter.playerCharacter?.updateElement(targetElement: selection, elementType: .featList)
 		default:
 			print("Missing appropriate criteria for -updateCharacter- protocol in BuilderParent.")
 			return

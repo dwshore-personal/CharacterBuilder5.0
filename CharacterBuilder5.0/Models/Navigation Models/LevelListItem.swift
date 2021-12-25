@@ -35,14 +35,13 @@ class LevelListItem: Codable, Equatable {
 	var classPDBonus: Int?
 	var classMDBonus: Int?
 	var listItemType: NavigationMenuItem.MenuName?
-//	var featClass:
-//	var featRace: PublicLists().raceList
-//	var featTier: Tier
-//	enum Tier: String, Codable {
-//		case Adventurer
-//		case Champion
-//		case Epic
-//	}
+	var featPrereq: FeatPrereq?
+	var featTier: Tier?
+	enum Tier: String, Codable {
+		case Adventurer
+		case Champion
+		case Epic
+	}
 	enum Stat: String, Codable, CaseIterable{
 		case STR = "Strength"
 		case CON = "Constitution"
