@@ -16,15 +16,18 @@ class LevelListArray: Codable, Equatable {
 	var levelListItems: [LevelListItem]
 	var selectionLimit: Int?
 	var isSet: Bool?
+	var arrayTitle: String?
 	
 	
 	
-	init(levelListItems: [LevelListItem]) {
+	init(title: String = "", levelListItems: [LevelListItem]) {
 		self.levelListItems = levelListItems
+		self.arrayTitle = title
 	}
-	init(levelListItems: [LevelListItem], selectionLimit: Int) {
+	init(title: String = "", selectionLimit: Int, levelListItems: [LevelListItem]) {
 		self.levelListItems = levelListItems
 		self.selectionLimit = selectionLimit
+		self.arrayTitle = title
 	}
 	
 //	RETURN LISTS
@@ -33,39 +36,6 @@ class LevelListArray: Codable, Equatable {
 	}
 	func selectionList(_ selected: Bool) -> [LevelListItem]{
 		return levelListItems.filter {$0.itemModified == selected}
-	}
-	func featList(playerCharacter: CharacterBase, category: NavigationMenuItem.MenuName) -> [LevelListItem]{
-		var filteredFeats: [LevelListItem] = []
-		switch category{
-		case .raceList:
-			for feat in PublicLists().featList {
-				if feat.featPrereq?.charRace == playerCharacter.charRace {
-					filteredFeats.append(feat)
-				}
-			}
-		case .classList:
-			for feat in PublicLists().featList {
-				if feat.featPrereq?.charClass == playerCharacter.charClass {
-					filteredFeats.append(feat)
-				}
-			}
-		/*
-		case .abilityList:
-			for feat in PublicLists().featList {
-				if feat.featPrereq?.ability == playerCharacter.ability {
-					filteredFeats.append(feat)
-				}
-			}
-		*/
-		default:
-			for feat in PublicLists().featList {
-				if ((feat.featPrereq?.none) != nil) {
-					filteredFeats.append(feat)
-				}
-			}
-		}
-		return filteredFeats
-		
 	}
 	
 //	MAKE CHANGES TO LISTS
@@ -93,22 +63,22 @@ class LevelListArray: Codable, Equatable {
 			let selectedListItem = levelListItems.filter { $0 == listItem}.first
 			selectedListItem?.itemLevel = level
 		}
-		listItem.setSelection(isSelected: (level != listItem.itemBaseLevel))
+		listItem.setSelection(status: (level != listItem.itemBaseLevel))
 	}
 	
 // HANDLE SELECTIONS
 	func selectItem(for selectedItem: LevelListItem) {
 		for item in levelListItems {
 			if item === selectedItem {
-				item.setSelection(isSelected: true)
+				item.setSelection(status: true)
 			} else {
-				item.setSelection(isSelected: false)
+				item.setSelection(status: false)
 			}
 		}
 	}
 	
-	func toggleSelection(_ icon: LevelListItem) {
-		levelListItems.filter { $0 === icon }.first?.toggle()
+	func toggleSelection(_ selection: LevelListItem) {
+		levelListItems.filter { $0 === selection }.first?.toggle()
 	}
 
 	

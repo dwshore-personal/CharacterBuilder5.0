@@ -10,17 +10,18 @@ import UIKit
 
 protocol SimpleTVCDelegate: AnyObject {
 	func updateDelegateView(_ currentCharacter: CharacterData)
-	func updateCharacter(_ selection: LevelListItem, from cellData: [LevelListItem], for currentMenu: NavigationMenuItem.MenuName)
+	func updateCharacter(_ selection: LevelListItem, from cellData: [[LevelListItem]], for currentMenu: NavigationMenuItem.MenuName)
 }
 
 class SimpleTVC: UITableViewController {
 
 	weak var delegate: SimpleTVCDelegate?
 	var currentMenu: NavigationMenuItem.MenuName
-	var cellData: [LevelListItem] = []
+	var cellData: [[LevelListItem]] = [[]]
 	var currentCharacter: CharacterData?
 	var selectedOption: LevelListItem?
 	var showFullList: Bool = true
+	var selectionLimit: Int = 1
 	
 	required init?(coder aDecoder: NSCoder) {
 		currentMenu = NavigationMenuItem.MenuName.classList
@@ -38,17 +39,41 @@ class SimpleTVC: UITableViewController {
 //	NUMBER OF SECTIONS
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+		switch currentMenu {
+//		case .featList:
+//			return PublicLists().featList.featGroups.count
+		default:
+			return cellData.count
+		}
     }
 //	NUMBER OF ROWS IN SECTION
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-		return cellData.count
+		switch currentMenu {
+//		case .featList:
+//			return PublicLists().featList.featGroups[section].feats.count
+		default:
+			return cellData[section].count
+		}
     }
-//	LOAD CELL DATA
+//	LOAD SECTION HEADER
+	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		switch currentMenu {
+		case .featList:
+			return currentCharacter?.playerCharacter?.charFeats![section].arrayTitle
+//			return currentCharacter?.playerCharacter?.charFeatsFull.featGroups[section].featReqName
+		default:
+			return currentMenu.rawValue
+		}
+		
+
+	}
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleCell", for: indexPath)
-		let cellInfo = cellData[indexPath.row]
+//		print("SimpleTVC-- cellForRowAt-- indexPath.section = \(indexPath.section), indexPath.row = \(indexPath.row)")
+		let cellInfo = cellData[indexPath.section][indexPath.row]
+		
+		
 		cell.textLabel?.text = cellInfo.itemName
 		cell.detailTextLabel?.text = cellInfo.itemDescription
 		configureCheckmark(for: cell, with: cellInfo)
@@ -56,26 +81,34 @@ class SimpleTVC: UITableViewController {
     }
 //	ACCESSORY BUTTON TAP
 	override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-		selectedOption = cellData[indexPath.row]
+		selectedOption = cellData[indexPath.section][indexPath.row]
 		performSegue(withIdentifier: "showLevelDetail", sender: self)
 		
 	}
 //	SELECTION PROCESS
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
-		selectedOption = cellData[indexPath.row] as LevelListItem
+		selectedOption = cellData[indexPath.section][indexPath.row] as LevelListItem
 		delegate?.updateCharacter(selectedOption!, from: cellData, for: currentMenu)
-		print("Selected: "+selectedOption!.itemName as String)
+		print("SimpleTVC-- didSelectRowAt-- indexPath: \(indexPath.section) with title: \(cellData[indexPath.section].description), \(indexPath.row)-- Selected: \(String(describing: selectedOption?.itemName))")
 		switch currentMenu {
 		case .iconRelationship:
 			let selectedIcon = PublicLists().iconList[indexPath.row]
 			currentCharacter?.playerCharacter?.characterIcons?.toggleSelection(selectedIcon)
 			delegate?.updateDelegateView(currentCharacter!)
-			cellData[indexPath.row].toggle()
+			cellData[indexPath.section][indexPath.row].toggle()
+		case .featList:
+			let selectedFeat = PublicLists().featList.featGroups[indexPath.section].feats[indexPath.row]
+			currentCharacter?.playerCharacter?.charFeats?.toggleSelection(selectedFeat)
+//			currentCharacter?.playerCharacter?.charFeatsFull.toggleFeatFromSelection(selection: selectedFeat)
+			delegate?.updateDelegateView(currentCharacter!)
+			cellData[indexPath.section][indexPath.row].toggle()
 		default:
 			print("no unique selection process")
-			for item in cellData {
+			for section in cellData {
+				for item in section {
 				item.itemModified = (item === selectedOption)
+				}
 			}
 		}
 		tableView.reloadData()
@@ -113,20 +146,28 @@ extension SimpleTVC {
 		switch currentMenu {
 		case .raceList:
 			let currentRace = currentCharacter?.playerCharacter?.charRace
-			cellData = PublicLists().raceList
-			cellData.filter {$0 == currentRace}.first?.itemModified = true
+			cellData = [PublicLists().raceList]
+			cellData[0].filter {$0 == currentRace}.first?.itemModified = true
 		case .classList:
 			let currentClass = currentCharacter?.playerCharacter?.charClass
-			cellData = PublicLists().classList
-			cellData.filter {$0 == currentClass}.first?.itemModified = true
+			cellData = [PublicLists().classList]
+			cellData[0].filter {$0 == currentClass}.first?.itemModified = true
 		case .iconRelationship:
 			if showFullList {
-				cellData = (currentCharacter?.playerCharacter?.characterIcons?.fullList())!
+				cellData = [(currentCharacter?.playerCharacter?.characterIcons?.fullList())!]
 			} else {
-				cellData = (currentCharacter?.playerCharacter?.characterIcons?.selectionList(showFullList))!
+				cellData = [(currentCharacter?.playerCharacter?.characterIcons?.selectionList(showFullList))!]
+			}
+		case .featList:
+			if showFullList {
+				cellData = (currentCharacter?.playerCharacter?.charFeatsFull.filteredFeats(playerCharacter: (currentCharacter?.playerCharacter)!))!
+			} else {
+				cellData = (currentCharacter?.playerCharacter?.charFeatsFull.filteredFeats(playerCharacter: (currentCharacter?.playerCharacter)!))!
 			}
 		default:
 			print("A non-simple list was selected")
 		}
+	
+		
 	}
 }

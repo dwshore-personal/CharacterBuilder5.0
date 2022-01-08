@@ -27,7 +27,8 @@ class CharacterBase: Codable {
 	var characterBackgrounds: LevelListArray?
 	var characterIcons: LevelListArray?
 	var characterUniqueThing: String
-	var charFeats: LevelListArray?
+	var charFeats: [LevelListArray]?
+	var charFeatsFull: FeatList = PublicLists().featList
 	init(charName: String) {
 		self.charName = charName
 		charID = UUID().uuidString
@@ -37,7 +38,6 @@ class CharacterBase: Codable {
 		characterIcons = LevelListArray(levelListItems: PublicLists().iconList)
 		characterUniqueThing = ""
 		elementList = NavigationMenuList().menuList()
-		charFeats = LevelListArray(levelListItems: PublicLists().featList)
 	}
 	func updateName(new name:String){
 		print("CharacterBase-- updateName-- running internal update name")
@@ -55,7 +55,14 @@ class CharacterBase: Codable {
 		case .iconRelationship:
 			characterIcons?.updateListItem(selection, with: level)
 		case .featList:
-			charFeats?.updateListItem(selection)
+			let featType = selection.featReqType
+			for type in LevelListItem.FeatPrereqType.allCases {
+				if type == featType {
+					
+				}
+			}
+			charFeats?.addListItem(selection)
+			charFeatsFull.toggleFeatFromSelection(selection: selection)
 		case .backgrounds:
 			characterBackgrounds?.addListItem(selection)
 		default:
@@ -67,6 +74,7 @@ class CharacterBase: Codable {
 		switch elementType {
 		case .featList:
 			charFeats?.deleteListItem(selection)
+			charFeatsFull.setFeatSelection(selection: selection, set: false)
 		case .backgrounds:
 			characterBackgrounds?.deleteListItem(selection)
 		case .iconRelationship:
@@ -81,6 +89,7 @@ class CharacterBase: Codable {
 		switch elementType {
 		case .featList:
 			charFeats?.updateListItem(selection)
+			charFeatsFull.toggleFeatFromSelection(selection: selection)
 		case .classList:
 			charClass = selection
 		case .raceList:

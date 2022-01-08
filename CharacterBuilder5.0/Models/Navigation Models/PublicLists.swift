@@ -8,20 +8,34 @@
 
 import Foundation
 class PublicLists: Codable {
-	 public var featList: [LevelListItem] = [
-		LevelListItem(itemName: "Roll With It"),
-		LevelListItem(itemName: "Spiky Bastard"),
-		LevelListItem(itemName: "Sure Cut")
-	]
+	public var featList: FeatList = FeatList(featGroups: [
+		FeatSubList(type: .General, feats: LevelListArray(levelListItems: [
+			LevelListItem(featName: "Am a general", featTier: .Adventurer),
+			LevelListItem(featName: "Another general", featTier: .Adventurer),
+			LevelListItem(featName: "A champion", featTier: .Champion)
+		])),
+		FeatSubList(type: .CharRace, name: "Dwarf", feats: LevelListArray(levelListItems: [
+			LevelListItem(featName: "Be a dwarf", featTier: .Adventurer),
+			LevelListItem(featName: "Tallest dwarf", featTier: .Adventurer),
+			LevelListItem(featName: "Not tall", featTier: .Champion)
+		])),
+		FeatSubList(type: .CharClass, name: "Barbarian", feats: LevelListArray(levelListItems: [
+			LevelListItem(featName: "Be a barby", featTier: .Adventurer),
+			LevelListItem(featName: "Be a big boy", featTier: .Adventurer),
+			LevelListItem(featName: "Be a champion", featTier: .Champion)
+		]))
+	])
+	
+	
 	public var classList: [LevelListItem] = [
-		LevelListItem(itemName: "Barbarian", itemDescription: "Heavy hitter", itemSelected: false),
-		LevelListItem(itemName: "Bard", itemDescription: "Sweet talker", itemSelected: false),
-		LevelListItem(itemName: "Wizard", itemDescription: "Wise ass", itemSelected: false)
+		LevelListItem(itemName: "Barbarian", itemDescription: "Heavy hitter", itemSelected: false, listItemType: .classList),
+		LevelListItem(itemName: "Bard", itemDescription: "Sweet talker", itemSelected: false, listItemType: .classList),
+		LevelListItem(itemName: "Wizard", itemDescription: "Wise ass", itemSelected: false, listItemType: .classList)
 	]
 	public var raceList: [LevelListItem] = [
-		LevelListItem(itemName: "Human", itemDescription: "Boring", itemSelected: false),
-		LevelListItem(itemName: "Elf", itemDescription: "Jumpy", itemSelected: false),
-		LevelListItem(itemName: "Dwarf", itemDescription: "Short", itemSelected: false)
+		LevelListItem(itemName: "Human", itemDescription: "Boring", itemSelected: false, listItemType: .raceList),
+		LevelListItem(itemName: "Elf", itemDescription: "Jumpy", itemSelected: false, listItemType: .raceList),
+		LevelListItem(itemName: "Dwarf", itemDescription: "Short", itemSelected: false, listItemType: .raceList)
 	]
 	public var statList: [LevelListItem] = [
 		LevelListItem(characterStat: .STR, baseLevel: 8, statDescription: "Smash", statSelected: false),
@@ -32,9 +46,9 @@ class PublicLists: Codable {
 		LevelListItem(characterStat: .CHA)
 	]
 	public var iconList: [LevelListItem] = [
-		LevelListItem(itemName: "The Three"),
-		LevelListItem(itemName: "The Diabolist"),
-		LevelListItem(itemName: "The Crusader"),
-		LevelListItem(itemName: "The Priestess")
+		LevelListItem(itemName: "The Three", listItemType: .iconRelationship),
+		LevelListItem(itemName: "The Diabolist", listItemType: .iconRelationship),
+		LevelListItem(itemName: "The Crusader", listItemType: .iconRelationship),
+		LevelListItem(itemName: "The Priestess", listItemType: .iconRelationship)
 	]
 }

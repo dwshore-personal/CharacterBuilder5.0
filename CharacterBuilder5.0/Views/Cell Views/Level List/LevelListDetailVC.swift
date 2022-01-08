@@ -37,7 +37,7 @@ class LevelListDetailVC: UIViewController {
 			delegate?.levelListDetail(self, didFinishEditing: item)
 		} else {
 			if let backgroundName = textField.text {
-				let newBackground = LevelListItem(itemName: backgroundName)
+				let newBackground = LevelListItem(itemName: backgroundName, listItemType: .backgrounds)
 //				currentCharacter?.playerCharacter?.addBackground(newBackground)
 				delegate?.levelListDetail(self, didFinishAdding: newBackground)
 			}

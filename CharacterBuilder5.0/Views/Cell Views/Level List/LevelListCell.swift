@@ -14,7 +14,7 @@ protocol LevelListCellDelegate: AnyObject {
 class LevelListCell: UITableViewCell {
 
 	weak var delegate: LevelListCellDelegate?
-	var indexRow: Int?
+	var cellIndexPath: IndexPath?
 	
 	@IBOutlet weak var cellTitle: UILabel!
 	@IBOutlet weak var cellLevel: UILabel!

@@ -109,7 +109,7 @@ class CharacterBuilderParentTVC: UITableViewController {
 
 //	MARK: Extensions
 extension CharacterBuilderParentTVC: SimpleTVCDelegate {
-	func updateCharacter(_ selection: LevelListItem, from cellData: [LevelListItem], for currentMenu: NavigationMenuItem.MenuName) {
+	func updateCharacter(_ selection: LevelListItem, from cellData: [[LevelListItem]], for currentMenu: NavigationMenuItem.MenuName) {
 		selection.itemModified = true
 		switch currentMenu {
 		case .classList:

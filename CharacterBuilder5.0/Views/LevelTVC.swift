@@ -17,7 +17,7 @@ class LevelTVC: UITableViewController {
 
 	weak var delegate: LevelTVCDelegate?
 	var currentMenu: NavigationMenuItem.MenuName
-	var cellData: [LevelListItem] = []
+	var cellData: [[LevelListItem]] = [[]]
 	var selectedOption: LevelListItem?
 	var currentCharacter: CharacterData?
 	
@@ -65,27 +65,25 @@ class LevelTVC: UITableViewController {
 	// MARK: - Updating functions
 	func importCellData(from currentMenu: NavigationMenuItem.MenuName){
 		cellData.removeAll()
-		var list: [LevelListItem] = []
+		var list: [[LevelListItem]] = [[]]
 		switch currentMenu {
 		case .statList:
 			guard let stats = currentCharacter?.playerCharacter?.charStats else {return}
-			list = stats.fullList()
+			list = [stats.fullList()]
 		case .backgrounds:
 			guard let backgrounds = currentCharacter?.playerCharacter?.characterBackgrounds else {return}
-			list = backgrounds.fullList()
+			list = [backgrounds.fullList()]
 		case .iconRelationship:
 			guard let icons = currentCharacter?.playerCharacter?.characterIcons?.selectionList(true) else {return}
-			list = icons
+			list = [icons]
 		case .featList:
-			guard let feats = currentCharacter?.playerCharacter?.charFeats?.selectionList(true) else {return}
+			guard let feats = currentCharacter?.playerCharacter?.charFeatsFull.selectionList(true) else {return}
 			list = feats
 		default:
 			print("A non-level menu was selected but went to the level viewer")
 			return
 		}
-		for item in list {
-			cellData.append(item as LevelListItem)
-		}
+		cellData = list
 	}
 	
 	func configureLevelCell(for cell: UITableViewCell, with item: LevelListItem){
@@ -115,16 +113,16 @@ class LevelTVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "levelCell", for: indexPath) as! LevelListCell
-		configureLevelCell(for: cell, with: cellData[indexPath.row])
+		configureLevelCell(for: cell, with: cellData[indexPath.section][indexPath.row])
 		cell.delegate = self
-		cell.indexRow = indexPath.row
+		cell.cellIndexPath = indexPath
         return cell
     }
 	
 	
 	// Will add this back in when I know if a cell will specifically need an action on tap
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		selectedOption = cellData[indexPath.row]
+		selectedOption = cellData[indexPath.section][indexPath.row]
 		performSegue(withIdentifier: "showLevelDetail", sender: self)
 	}
 
@@ -132,15 +130,18 @@ class LevelTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-			let item = cellData[indexPath.row]
+			let item = cellData[indexPath.section][indexPath.row]
 			
 			switch currentMenu {
 			case .backgrounds:
-				cellData.remove(at: indexPath.row)
+				cellData[indexPath.section].remove(at: indexPath.row)
 				currentCharacter?.playerCharacter?.deleteElement(targetElement: item, elementType: .backgrounds)
 			case .iconRelationship:
 				item.toggle()
 				currentCharacter?.playerCharacter?.characterIcons?.toggleSelection(item)
+			case .featList:
+				item.toggle()
+				currentCharacter?.playerCharacter?.charFeatsFull.toggleFeatFromSelection(selection: item)
 			default:
 				return
 			}
@@ -192,8 +193,7 @@ class LevelTVC: UITableViewController {
 
 extension LevelTVC: LevelListCellDelegate {
 	func updateLevels(for cell: LevelListCell) {
-		let cellIndexRow = cell.indexRow
-		let currentData = cellData[cellIndexRow!]
+		let currentData = cellData[cell.cellIndexPath!.section][cell.cellIndexPath!.row]
 		currentData.itemLevel = Int(cell.levelStepperOutlet.value)
 		switch currentMenu {
 		case .statList:
@@ -207,6 +207,8 @@ extension LevelTVC: LevelListCellDelegate {
 //			let currentIcon = currentCharacter?.playerCharacter?.characterIcons?.fullList().filter({ $0.itemName == currentData.itemName }).first
 //			let currentIcon = currentCharacter?.playerCharacter?.characterIcons.selectionList(true).filter { $0.itemName == currentData.itemName }.first
 			currentCharacter?.playerCharacter?.updateElement(targetElement: currentData, elementType: .iconRelationship, level: currentData.itemLevel)
+		case .featList:
+			currentCharacter?.playerCharacter?.updateElement(targetElement: currentData, elementType: .featList)
 		default:
 			print("error passing LevelListCellDelegate data to -updateLevel-")
 		}
@@ -227,9 +229,8 @@ extension LevelTVC: LeveListDetailDelegate {
 			let rowIndex = ((currentCharacter?.playerCharacter?.characterBackgrounds?.fullList().count)!) - 1
 			let indexPath = IndexPath(row: rowIndex, section: 0)
 			let indexPaths = [indexPath]
-			cellData.insert(item, at: rowIndex)
+			cellData[0].insert(item, at: rowIndex)
 			tableView.insertRows(at: indexPaths, with: .automatic)
-			
 //			tableView.reloadData()
 		default:
 			return
@@ -254,12 +255,12 @@ extension LevelTVC: LeveListDetailDelegate {
 }
 
 extension LevelTVC: SimpleTVCDelegate {
-	func updateCharacter(_ selection: LevelListItem, from cellData: [LevelListItem], for currentMenu: NavigationMenuItem.MenuName) {
+	func updateCharacter(_ selection: LevelListItem, from cellData: [[LevelListItem]], for currentMenu: NavigationMenuItem.MenuName) {
 		print("LevelTVC-- DelegateCall-- updateCharacter: " + currentMenu.rawValue)
 		if self.currentMenu != currentMenu { print("Menu passed from SimpleDelegate does not match current menu in LevelList"); return }
 		switch currentMenu {
 		case .iconRelationship:
-			self.cellData = cellData.filter { $0.itemModified == true}
+			self.cellData = cellData.filter { $0[0].itemModified == true}
 		default:
 			return
 		}
