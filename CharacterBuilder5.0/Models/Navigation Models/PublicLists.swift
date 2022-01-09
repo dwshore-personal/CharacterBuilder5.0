@@ -8,6 +8,11 @@
 
 import Foundation
 class PublicLists: Codable {
+	public enum EntryUpdateType: String, Codable {
+		case Update
+		case Delete
+		case Add
+	}
 	 public var featList: [LevelListItem] = [
 		LevelListItem(itemName: "Roll With It"),
 		LevelListItem(itemName: "Spiky Bastard"),

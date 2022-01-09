@@ -31,6 +31,7 @@
 		02DAC9EF23985E0500CCEE91 /* SimpleList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02DAC9EE23985E0500CCEE91 /* SimpleList.storyboard */; };
 		02DAC9F123986D6B00CCEE91 /* ListDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02DAC9F023986D6B00CCEE91 /* ListDetail.storyboard */; };
 		DB2730622776C648008E76FB /* PublicLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2730612776C648008E76FB /* PublicLists.swift */; };
+		DB55B949278933A800E3CF98 /* LevelListDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB55B948278933A800E3CF98 /* LevelListDictionary.swift */; };
 		DBEDF31B276E3AC90026CD32 /* LevelListArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEDF31A276E3AC90026CD32 /* LevelListArray.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		02DAC9EE23985E0500CCEE91 /* SimpleList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SimpleList.storyboard; sourceTree = "<group>"; };
 		02DAC9F023986D6B00CCEE91 /* ListDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ListDetail.storyboard; sourceTree = "<group>"; };
 		DB2730612776C648008E76FB /* PublicLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicLists.swift; sourceTree = "<group>"; };
+		DB55B948278933A800E3CF98 /* LevelListDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelListDictionary.swift; sourceTree = "<group>"; };
 		DBEDF31A276E3AC90026CD32 /* LevelListArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelListArray.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +93,7 @@
 				024B0F12236F0CFC000408D7 /* NavigationMenuItem.swift */,
 				0244885D2378735A00D05CAE /* LevelListItem.swift */,
 				DBEDF31A276E3AC90026CD32 /* LevelListArray.swift */,
+				DB55B948278933A800E3CF98 /* LevelListDictionary.swift */,
 				DB2730612776C648008E76FB /* PublicLists.swift */,
 			);
 			path = "Navigation Models";
@@ -277,6 +280,7 @@
 				DB2730622776C648008E76FB /* PublicLists.swift in Sources */,
 				024B0F13236F0CFC000408D7 /* NavigationMenuItem.swift in Sources */,
 				02B4CD7323D7570C00657410 /* PopupParagraphView.swift in Sources */,
+				DB55B949278933A800E3CF98 /* LevelListDictionary.swift in Sources */,
 				022982AD236D1F60008FF9ED /* CharacterBuilderParentTVC.swift in Sources */,
 				0265AE0D2372572300F1DA40 /* PopupUIV.swift in Sources */,
 				0244885E2378735A00D05CAE /* LevelListItem.swift in Sources */,
