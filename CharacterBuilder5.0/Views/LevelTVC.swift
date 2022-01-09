@@ -237,7 +237,7 @@ extension LevelTVC: LeveListDetailDelegate {
 		switch currentMenu {
 		case .backgrounds:
 			let currentList = currentCharacter?.playerCharacter?.characterBackgrounds?.fullList()
-			if let index = currentList?.firstIndex(of: item as! CharacterBackgroundDetail) {
+			if let index = currentList?.firstIndex(of: item) {
 				let indexPath = IndexPath(row: index, section: 0)
 				if let cell = tableView.cellForRow(at: indexPath) {
 					configureLevelCell(for: cell, with: item)

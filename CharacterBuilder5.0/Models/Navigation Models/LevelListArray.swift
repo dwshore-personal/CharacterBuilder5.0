@@ -51,7 +51,7 @@ class LevelListArray: Codable, Equatable {
 		let index = levelListItems.firstIndex(of: listItem)
 		levelListItems.remove(at: index!)
 	}
-	func updateListItem(_ listItem: LevelListItem, with level: Int){
+	func updateListItem(_ listItem: LevelListItem, with level: Int = 0){
 		if let index = levelListItems.firstIndex(of: listItem) {
 			print("[LevelListArray]-- updateListItem entire listItem")
 			levelListItems[index] = listItem

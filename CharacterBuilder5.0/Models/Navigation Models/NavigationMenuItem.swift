@@ -8,7 +8,7 @@
 
 import Foundation
 class NavigationMenuItem: NSObject, Codable {
-	public enum MenuName: String, CaseIterable, Codable {
+	public enum MenuName: String, CaseIterable, Codable, Hashable {
 		case characterName = "Character Name"
 		case classList = "Class"
 		case raceList = "Race"
