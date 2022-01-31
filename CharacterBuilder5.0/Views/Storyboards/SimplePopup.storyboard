@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pjr-7Q-H6l">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pjr-7Q-H6l">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,13 +18,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="n4q-kt-ZeH" customClass="PopupUIV" customModule="CharacterBuilder5_0" customModuleProvider="target">
-                                <rect key="frame" x="30" y="82" width="354" height="295"/>
+                                <rect key="frame" x="30" y="82" width="296" height="460"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="cP5-ms-1cA">
-                                        <rect key="frame" x="10" y="10" width="334" height="275"/>
+                                        <rect key="frame" x="10" y="10" width="276" height="440"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUw-7x-mCl">
-                                                <rect key="frame" x="10" y="0.0" width="314" height="41"/>
+                                                <rect key="frame" x="10" y="0.0" width="256" height="41"/>
                                                 <string key="text">Enter your character name 
 (you can change it later):</string>
                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
@@ -30,13 +32,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Call me Ishmael" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e3C-aw-7WR">
-                                                <rect key="frame" x="10" y="56" width="314" height="34"/>
+                                                <rect key="frame" x="10" y="56" width="256" height="199"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" usesAttributedText="YES" allowsEditingTextAttributes="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kv5-Nj-dvA">
-                                                <rect key="frame" x="10" y="105" width="314" height="120"/>
-                                                <color key="backgroundColor" systemColor="secondarySystemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <rect key="frame" x="10" y="270" width="256" height="120"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" selected="YES"/>
                                                 </accessibility>
@@ -46,7 +48,7 @@
                                                 <attributedString key="attributedText">
                                                     <fragment content="I'm the only person with 2 left feet.">
                                                         <attributes>
-                                                            <color key="NSColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="NSColor" systemColor="labelColor"/>
                                                             <font key="NSFont" metaFont="menuBar"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
@@ -54,11 +56,12 @@
                                                 </attributedString>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes"/>
                                             </textView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="174" translatesAutoresizingMaskIntoConstraints="NO" id="zLq-nO-8yn">
-                                                <rect key="frame" x="10" y="240" width="314" height="35"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="174" baselineRelativeArrangement="YES" id="zLq-nO-8yn">
+                                                <rect key="frame" x="10" y="405" width="256" height="30"/>
+                                                <autoresizingMask key="autoresizingMask"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CjG-U1-7En">
-                                                        <rect key="frame" x="0.0" y="0.0" width="82" height="35"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CjG-U1-7En">
+                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="35"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="35" id="WZf-zf-ubf"/>
                                                         </constraints>
@@ -69,8 +72,9 @@
                                                             <action selector="cancelButton:" destination="pjr-7Q-H6l" eventType="touchUpInside" id="hr1-6C-Qbw"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VHH-Gx-tDJ">
-                                                        <rect key="frame" x="256" y="0.0" width="58" height="35"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VHH-Gx-tDJ">
+                                                        <rect key="frame" x="222" y="0.0" width="34" height="35"/>
+                                                        <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
                                                         <state key="normal" title="Save"/>
                                                         <connections>
                                                             <action selector="saveButton:" destination="pjr-7Q-H6l" eventType="touchUpInside" id="Fdp-GX-9Va"/>
@@ -79,7 +83,8 @@
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="VHH-Gx-tDJ" firstAttribute="height" secondItem="CjG-U1-7En" secondAttribute="height" id="2Pl-Uq-m14"/>
-                                                    <constraint firstItem="VHH-Gx-tDJ" firstAttribute="width" secondItem="CjG-U1-7En" secondAttribute="width" multiplier="0.708333" id="BfW-w8-CIh"/>
+                                                    <constraint firstItem="CjG-U1-7En" firstAttribute="width" secondItem="zLq-nO-8yn" secondAttribute="width" multiplier="0.3" id="sB2-2m-e4t"/>
+                                                    <constraint firstItem="CjG-U1-7En" firstAttribute="width" secondItem="VHH-Gx-tDJ" secondAttribute="width" multiplier="1.41176" id="sgH-PR-Frc"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
@@ -101,6 +106,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="2Kp-YR-GJR"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="n4q-kt-ZeH" firstAttribute="top" secondItem="leb-Po-SyY" secondAttribute="topMargin" constant="30" id="HWc-4D-myC"/>
@@ -108,7 +114,6 @@
                             <constraint firstItem="n4q-kt-ZeH" firstAttribute="centerX" secondItem="leb-Po-SyY" secondAttribute="centerX" id="y7G-mM-gyQ"/>
                             <constraint firstItem="2Kp-YR-GJR" firstAttribute="trailing" secondItem="n4q-kt-ZeH" secondAttribute="trailing" constant="30" id="yf8-R8-D0Z"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="2Kp-YR-GJR"/>
                     </view>
                     <connections>
                         <outlet property="paragraphField" destination="Kv5-Nj-dvA" id="bJO-td-Pu9"/>
@@ -121,4 +126,12 @@
             <point key="canvasLocation" x="1117.3913043478262" y="-756.69642857142856"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondarySystemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
