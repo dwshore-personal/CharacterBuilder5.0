@@ -77,7 +77,7 @@ class CharacterBuilderParentTVC: UITableViewController {
 			vc.delegate = self
 			vc.currentMenu = selectedMenu?.menuName
 			if selectedMenu?.menuName == .characterName {
-				if let characterName = currentCharacter.playerCharacter?.charName {
+				if let characterName = currentCharacter.charData?.charName {
 					vc.createNewCharacter = false
 					vc.textFieldDescription = characterName
 				} else {
@@ -85,7 +85,7 @@ class CharacterBuilderParentTVC: UITableViewController {
 					vc.textFieldDescription = ""
 				}
 			} else if selectedMenu?.menuName == .uniqueThing {
-				let description = currentCharacter.playerCharacter?.characterUniqueThing
+				let description = currentCharacter.charData?.characterUniqueThing
 				if description == "" { return }
 				vc.textFieldDescription = description
 			}
@@ -94,7 +94,7 @@ class CharacterBuilderParentTVC: UITableViewController {
 			let vc = segue.destination as! LevelTVC
 			vc.delegate = self
 			vc.currentMenu = selectedMenu!.menuName
-			vc.currentCharacter = currentCharacter
+			vc.charMenu = currentCharacter
 			vc.title = selectedMenu?.menuName.rawValue
 
 		default:
@@ -113,11 +113,11 @@ extension CharacterBuilderParentTVC: SimpleTVCDelegate {
 		selection.itemModified = true
 		switch currentMenu {
 		case .classList:
-			currentCharacter.playerCharacter?.updateElement(targetElement: selection, elementType: .classList)
-			mainMenu.updateMenuFromCharacterSettings(character: currentCharacter.playerCharacter!)
+			currentCharacter.charData?.updateElement(targetElement: selection, elementType: .classList)
+			mainMenu.updateMenuFromCharacterSettings(character: currentCharacter.charData!)
 		case .raceList:
-			currentCharacter.playerCharacter?.updateElement(targetElement: selection, elementType: .raceList)
-			mainMenu.updateMenuFromCharacterSettings(character: currentCharacter.playerCharacter!)
+			currentCharacter.charData?.updateElement(targetElement: selection, elementType: .raceList)
+			mainMenu.updateMenuFromCharacterSettings(character: currentCharacter.charData!)
 		default:
 			print("Missing appropriate criteria for -updateCharacter- protocol in BuilderParent.")
 			return
@@ -141,20 +141,20 @@ extension CharacterBuilderParentTVC: SimplePopupVCDelegate {
 		if newDescription.isEmpty { return }
 		switch menuName {
 		case .characterName:
-			if currentCharacter.playerCharacter == nil {
+			if currentCharacter.charData == nil {
 				currentCharacter.createNewCharacter(forCharacter: newDescription)
-				print("SimplePopupVCDelegate-- createCharacter-- created new character = \(String(describing: currentCharacter.playerCharacter?.charName))")
+				print("SimplePopupVCDelegate-- createCharacter-- created new character = \(String(describing: currentCharacter.charData?.charName))")
 			} else {
-				currentCharacter.playerCharacter?.updateName(new: newDescription)
-				print("SimplePopupVCDelegate-- updateCharacter-- updated character = \(String(describing: currentCharacter.playerCharacter?.charName))")
+				currentCharacter.charData?.updateName(new: newDescription)
+				print("SimplePopupVCDelegate-- updateCharacter-- updated character = \(String(describing: currentCharacter.charData?.charName))")
 			}
 		case .uniqueThing:
-			currentCharacter.playerCharacter?.updateOneUniqueThing(newDescription)
+			currentCharacter.charData?.updateOneUniqueThing(newDescription)
 		default:
 			print("missing a usable menu")
 			return
 		}
-		mainMenu.updateMenuFromCharacterSettings(character: currentCharacter.playerCharacter!)
+		mainMenu.updateMenuFromCharacterSettings(character: currentCharacter.charData!)
 		tableView.reloadData()
 	}
 	
@@ -167,7 +167,7 @@ extension CharacterBuilderParentTVC: LevelTVCDelegate {
 	}
 	
 	func refreshLevelTVCDelegate() {
-		mainMenu.updateMenuFromCharacterSettings(character: currentCharacter.playerCharacter!)
+		mainMenu.updateMenuFromCharacterSettings(character: currentCharacter.charData!)
 		tableView.reloadData()
 	}
 	

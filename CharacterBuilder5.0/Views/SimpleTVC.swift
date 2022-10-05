@@ -69,7 +69,7 @@ class SimpleTVC: UITableViewController {
 		switch currentMenu {
 		case .iconRelationship:
 			let selectedIcon = PublicLists().iconList[indexPath.row]
-			currentCharacter?.playerCharacter?.characterIcons?.toggleSelection(selectedIcon)
+			currentCharacter?.charData?.characterIcons?.toggleSelection(selectedIcon)
 			delegate?.updateDelegateView(currentCharacter!)
 			cellData[indexPath.row].toggle()
 		default:
@@ -112,18 +112,18 @@ extension SimpleTVC {
 		cellData.removeAll()
 		switch currentMenu {
 		case .raceList:
-			let currentRace = currentCharacter?.playerCharacter?.charRace
+			let currentRace = currentCharacter?.charData?.charRace
 			cellData = PublicLists().raceList
 			cellData.filter {$0 == currentRace}.first?.itemModified = true
 		case .classList:
-			let currentClass = currentCharacter?.playerCharacter?.charClass
+			let currentClass = currentCharacter?.charData?.charClass
 			cellData = PublicLists().classList
 			cellData.filter {$0 == currentClass}.first?.itemModified = true
 		case .iconRelationship:
 			if showFullList {
-				cellData = (currentCharacter?.playerCharacter?.characterIcons?.fullList())!
+				cellData = (currentCharacter?.charData?.characterIcons?.fullList())!
 			} else {
-				cellData = (currentCharacter?.playerCharacter?.characterIcons?.selectionList(showFullList))!
+				cellData = (currentCharacter?.charData?.characterIcons?.selectionList(showFullList))!
 			}
 		default:
 			print("A non-simple list was selected")

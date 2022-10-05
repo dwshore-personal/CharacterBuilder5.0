@@ -9,16 +9,19 @@
 import Foundation
 
 class CharacterData {
-	var playerCharacter: CharacterBase?
+	var charData: CharacterBase?
 	func createNewCharacter(forCharacter name: String) {
 		print("CharacterBase-- createNewCharacter-- creating new character with name: \(name)")
-		playerCharacter = CharacterBase(charName: name)
+		charData = CharacterBase(charName: name)
 	}
 }
 
 class CharacterBase: Codable {
 	var charID: String!
 	var charName: String
+	var characterUniqueThing: String
+	var charElements: LevelListDictionary
+	var charFeats: LevelListDictionary?
 	var elementList: [NavigationMenuItem]
 	var charClass: LevelListItem?
 	var charRace: LevelListItem?
@@ -26,7 +29,7 @@ class CharacterBase: Codable {
 	var charStatsModified: Bool
 	var characterBackgrounds: LevelListArray?
 	var characterIcons: LevelListArray?
-	var characterUniqueThing: String
+
 	init(charName: String) {
 		self.charName = charName
 		charID = UUID().uuidString
@@ -36,6 +39,9 @@ class CharacterBase: Codable {
 		characterIcons = LevelListArray(levelListItems: PublicLists().iconList)
 		characterUniqueThing = ""
 		elementList = NavigationMenuList().menuList()
+		charElements = LevelListDictionary(listType: .statList, selectionLimit: PublicLists().statList.count, list: LevelListArray(levelListItems: PublicLists().statList))
+		charElements.updateListByName(.backgrounds, list: LevelListArray(levelListItems: []), updateType: .Add)
+		charElements.updateListByName(.iconRelationship, list: LevelListArray(levelListItems: PublicLists().iconList), updateType: .Add)
 	}
 	func updateName(new name:String){
 		print("CharacterBase-- updateName-- running internal update name")

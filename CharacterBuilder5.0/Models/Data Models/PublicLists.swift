@@ -13,16 +13,28 @@ class PublicLists: Codable {
 		case Delete
 		case Add
 	}
-	 public var featList: [LevelListItem] = [
-		LevelListItem(itemName: "Roll With It"),
-		LevelListItem(itemName: "Spiky Bastard"),
-		LevelListItem(itemName: "Sure Cut")
-	]
+//	 public var featList: [LevelListItem] = [
+//		LevelListItem(itemName: "Roll With It"),
+//		LevelListItem(itemName: "Spiky Bastard"),
+//		LevelListItem(itemName: "Sure Cut")
+//	]
+	
+	public var featList: LevelListDictionary = LevelListDictionary(listType: .featList, list: LevelListArray(levelListItems: [
+					LevelListItem(itemName: "Roll With It"),
+					LevelListItem(itemName: "Spiky Bastard"),
+					LevelListItem(itemName: "Sure Cut")
+					])
+													
+	)
+		
+		
+		
 	public enum FeatPrereq: String, Codable {
 			case None
 			case CharRace
 			case CharClass
 			/*
+			case Ability
 			case Talent
 			case BattleCry
 			case SpellOrSong
